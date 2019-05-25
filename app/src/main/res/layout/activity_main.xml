@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.jqk.mydemo.MainActivity"></variable>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        tools:context=".MainActivity">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/im"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::im}"
+                    android:text="IM" />
+
+                <Button
+                    android:id="@+id/service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::service}"
+                    android:text="service"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/showPicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::showPicture}"
+                    android:text="图片展示"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/webView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::webView}"
+                    android:text="WebView"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/mvvm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::mvvm}"
+                    android:text="MVVM"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/rxJava"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::rxJava}"
+                    android:text="RxJava"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/okHttp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::okHttp}"
+                    android:text="OkHttp"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/retrofit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::retrofit}"
+                    android:text="retrofit"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/liuhai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::liuhai}"
+                    android:text="刘海屏"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/dagger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::dagger}"
+                    android:text="Dagger2"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/glide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::glide}"
+                    android:text="Glide4.0"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::recyclerView}"
+                    android:text="recyclerView"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/jetpack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::jetpack}"
+                    android:text="jetpack"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/file"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::file}"
+                    android:text="文件操作" />
+
+                <Button
+                    android:id="@+id/customBehavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::customBehavior}"
+                    android:text="自定义Behavior" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

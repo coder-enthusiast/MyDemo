@@ -1,0 +1,37 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:1-5:48
+	package
+		ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:3:11-56
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:5:11-36
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml:4:11-34
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+uses-sdk
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		ADDED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\github\MyDemo\subsampling-scale-image-view-library\src\main\AndroidManifest.xml

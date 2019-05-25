@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyDemo</string>
+
+    <string name="replied">Replied</string>
+    <string name="reply">Reply</string>
+    <string name="send_2_conversations">Send 2 conversations with 1 message</string>
+    <string name="send_1_conversation">Send 1 conversation with 1 message</string>
+    <string name="send_1_conv_3_messages">Send 1 conversation with 3 messages</string>
+    <string name="clear_log">Clear Log</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="behavior_sample_title">com.jqk.rxandroidtest.behavior.SampleTitleBehavior</string>
+
+    <string name="haha">😁</string>
+</resources>

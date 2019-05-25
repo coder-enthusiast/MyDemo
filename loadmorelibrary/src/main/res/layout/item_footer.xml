@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/footView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <include
+            android:id="@+id/nomoreView"
+            layout="@layout/item_nomore"></include>
+
+        <include
+            android:id="@+id/progressView"
+            layout="@layout/item_progress"></include>
+
+        <include
+            android:id="@+id/failView"
+            layout="@layout/item_fail"></include>
+    </FrameLayout>
+</layout>

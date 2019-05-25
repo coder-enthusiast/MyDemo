@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.jqk.mydemo.databinding.User"></variable>
+
+        <variable
+            name="view"
+            type="com.jqk.mydemo.databinding.DBTestActivity"></variable>
+    </data>
+
+    <!--<data>-->
+    <!--<import type="android.databinding.ObservableMap"/>-->
+    <!--<variable name="user" type="ObservableMap&lt;String, Object&gt;"/>-->
+    <!--</data>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- 双向绑定@=，单项绑定@-->
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={user.userName}" />
+
+        <Button
+            android:id="@+id/change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="改变数据" />
+
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:imageUrl="@{user.url}"
+            app:placeholder="@{@drawable/ic_launcher}" />
+
+        <include
+            android:id="@+id/include"
+            bind:view="@{view}"
+            layout="@layout/item_include">
+
+        </include>
+    </LinearLayout>
+</layout>

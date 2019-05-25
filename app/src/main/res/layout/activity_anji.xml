@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#124578"
+    android:gravity="center">
+
+    <com.jqk.mydemo.view.ZoomButton
+        android:id="@+id/zoomView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle"
+        android:text="haha"></com.jqk.mydemo.view.ZoomButton>
+
+</LinearLayout>

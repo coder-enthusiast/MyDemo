@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.jqk.mydemo.jetpack.paging.PagingActivity"></variable>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bypage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{view::byPage}"
+            android:text="bypage"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/byitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{view::byItem}"
+            android:text="byItem"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</layout>

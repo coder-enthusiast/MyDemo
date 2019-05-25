@@ -1,0 +1,13 @@
+int attr assetName 0x7f040001
+int attr panEnabled 0x7f040002
+int attr quickScaleEnabled 0x7f040003
+int attr src 0x7f040004
+int attr tileBackgroundColor 0x7f040005
+int attr zoomEnabled 0x7f040006
+int[] styleable SubsamplingScaleImageView { 0x7f040001, 0x7f040002, 0x7f040003, 0x7f040004, 0x7f040005, 0x7f040006 }
+int styleable SubsamplingScaleImageView_assetName 0
+int styleable SubsamplingScaleImageView_panEnabled 1
+int styleable SubsamplingScaleImageView_quickScaleEnabled 2
+int styleable SubsamplingScaleImageView_src 3
+int styleable SubsamplingScaleImageView_tileBackgroundColor 4
+int styleable SubsamplingScaleImageView_zoomEnabled 5

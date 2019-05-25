@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pull_width">160dp</dimen>
+    <dimen name="cubic_size">28dp</dimen>
+    <dimen name="pull_cubic_radis">14dp</dimen>
+    <dimen name="pull_progress_size">24dp</dimen>
+    <dimen name="pull_skew_dist">25dp</dimen>
+    <dimen name="pull_shrink_size">4dp</dimen>
+</resources>

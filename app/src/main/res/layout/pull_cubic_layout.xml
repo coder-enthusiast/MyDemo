@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--下拉刷新区域-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/pull_width"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="6dp">
+
+    <com.jqk.mydemo.pullrefresh.PullFreshCubicView
+        android:id="@+id/beiser_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/pull_progress"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="@dimen/pull_progress_size"
+        android:layout_height="@dimen/pull_progress_size"
+        android:layout_gravity="center_horizontal"
+        android:alpha="0"
+        android:src="@drawable/pull_progress"
+        android:visibility="visible" />
+
+    <com.jqk.mydemo.pullrefresh.PullOkImageView
+        android:id="@+id/pull_ok"
+        android:layout_width="@dimen/pull_progress_size"
+        android:layout_height="@dimen/pull_progress_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ok"
+        android:visibility="visible" />
+</FrameLayout>
