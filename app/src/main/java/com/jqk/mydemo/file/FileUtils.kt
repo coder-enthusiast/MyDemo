@@ -134,11 +134,11 @@ object FileUtils {
                     if (subDirFile.isDirectory && !subDirFile.name.equals("sys")) {
                         fixedThreadPool.execute(DirRunnable(subDirFile.path, emitter, fixedThreadPool))
                     } else {
-                        if (subDirFile.name.endsWith("mp3")) {
+//                        if (subDirFile.name.endsWith("mp3")) {
                             L.d("文件：" + subDirFile.name)
                             onFindFileListener?.onFindFile(subDirFile.name)
                             emitter.onNext(subDirFile.name)
-                        }
+//                        }
                     }
                 }
             }

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.jqk.mydemo.R
 import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.databinding.ActivityFilemodeBinding
+import com.jqk.mydemo.file.dir.DirFragmentActivity
 import com.jqk.mydemo.file.file.FileActivity
 
 class FileModeActivity : BaseActivity() {
@@ -22,5 +23,9 @@ class FileModeActivity : BaseActivity() {
 
     fun file(view: View) {
         jumpActivity(FileActivity().javaClass)
+    }
+
+    fun dirFragment(view: View) {
+        jumpActivity(DirFragmentActivity().javaClass)
     }
 }

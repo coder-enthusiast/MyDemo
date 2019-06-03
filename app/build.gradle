@@ -14,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // 方法超过65536
+        multiDexEnabled true
     }
 
     aaptOptions {
@@ -101,6 +103,8 @@ dependencies {
     implementation "com.android.support:support-emoji:28.0.0"
     implementation "com.android.support:support-emoji-appcompat:28.0.0"
     implementation "com.android.support:support-emoji-bundled:28.0.0"
+    // 方法超过65536
+    implementation 'com.android.support:multidex:1.0.3'
 
     implementation project(':loadmorelibrary')
     implementation project(':subsampling-scale-image-view-library')
