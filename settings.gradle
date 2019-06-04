@@ -1,1 +1,1 @@
-include ':app', 'loadmorelibrary', ':subsampling-scale-image-view-library'
+include ':app', 'loadmorelibrary', ':subsampling-scale-image-view-library', ':ijkplayer-arm64', ':ijkplayer-java', ':ijkplayer-exo'

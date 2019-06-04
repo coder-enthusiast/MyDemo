@@ -109,7 +109,7 @@ class DirFragment : Fragment() {
                 scanDirectory(path, false)
             }
 
-            override fun onFileClick(name: String) {
+            override fun onFileClick(name: String, path: String) {
                 Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
             }
         }

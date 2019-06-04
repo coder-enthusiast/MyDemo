@@ -15,6 +15,7 @@ import com.example.cartest.DirItemAdaper
 import com.example.cartest.FileUtils
 import com.jqk.mydemo.R
 import com.jqk.mydemo.databinding.ActivityDirBinding
+import com.jqk.mydemo.file.music.MusicPlayerActivity
 import com.jqk.mydemo.show.showview.BaseActivity
 import com.jqk.mydemo.util.L
 import io.reactivex.Observable
@@ -106,8 +107,16 @@ class DirActivity : BaseActivity() {
                 scanDirectory(path, false)
             }
 
-            override fun onFileClick(name: String) {
-                Toast.makeText(this@DirActivity, name, Toast.LENGTH_SHORT).show()
+            override fun onFileClick(name: String, path: String) {
+                Toast.makeText(this@DirActivity, name + "-----" + path, Toast.LENGTH_SHORT).show()
+
+                if (name.endsWith(".mp3")) {
+                    val intent = Intent()
+                    intent.setClass(this@DirActivity, MusicPlayerActivity()::class.java)
+                    intent.putExtra("musicName", name)
+                    intent.putExtra("path", path)
+                    startActivity(intent)
+                }
             }
         }
     }
