@@ -143,7 +143,7 @@ dependencies {
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     implementation 'com.google.android.material:material:1.0.0-beta01'
-    implementation project(path: ':ijkplayer-arm64')
     implementation project(path: ':ijkplayer-java')
     implementation project(path: ':ijkplayer-exo')
+    implementation project(path: ':ijkplayer-armv7a')
 }

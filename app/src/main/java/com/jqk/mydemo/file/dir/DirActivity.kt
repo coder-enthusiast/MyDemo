@@ -16,6 +16,7 @@ import com.example.cartest.FileUtils
 import com.jqk.mydemo.R
 import com.jqk.mydemo.databinding.ActivityDirBinding
 import com.jqk.mydemo.file.music.MusicPlayerActivity
+import com.jqk.mydemo.file.video.VideoPlayerActivity
 import com.jqk.mydemo.show.showview.BaseActivity
 import com.jqk.mydemo.util.L
 import io.reactivex.Observable
@@ -53,7 +54,7 @@ class DirActivity : BaseActivity() {
         intentFilter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
         registerReceiver(broadcastReceiver, intentFilter)
 
-        scanDirectory("/", true)
+        scanDirectory("/mnt/sdcard/媒体/", true)
     }
 
     fun scanDirectory(path: String, isRoot: Boolean) {
@@ -110,13 +111,18 @@ class DirActivity : BaseActivity() {
             override fun onFileClick(name: String, path: String) {
                 Toast.makeText(this@DirActivity, name + "-----" + path, Toast.LENGTH_SHORT).show()
 
-                if (name.endsWith(".mp3")) {
-                    val intent = Intent()
-                    intent.setClass(this@DirActivity, MusicPlayerActivity()::class.java)
-                    intent.putExtra("musicName", name)
-                    intent.putExtra("path", path)
-                    startActivity(intent)
-                }
+//                if (name.endsWith(".mp3") ) {
+//                    val intent = Intent()
+//                    intent.setClass(this@DirActivity, MusicPlayerActivity()::class.java)
+//                    intent.putExtra("musicName", name)
+//                    intent.putExtra("path", path)
+//                    startActivity(intent)
+//                }
+
+                val intent = Intent()
+                intent.setClass(this@DirActivity, VideoPlayerActivity()::class.java)
+                intent.putExtra("path", path)
+                startActivity(intent)
             }
         }
     }

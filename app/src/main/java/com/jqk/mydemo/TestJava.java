@@ -12,4 +12,5 @@ public class TestJava {
         TestJava testB = new TestJava();
         System.out.println(test.equals(testB) + "," + test.name.equals(testB.name));
     }
+
 }

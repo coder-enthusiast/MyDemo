@@ -206,6 +206,8 @@
 
         <activity android:name=".file.music.MusicPlayerActivity"></activity>
 
+        <activity android:name=".file.video.VideoPlayerActivity"></activity>
+
         <service android:name="com.jqk.mydemo.service.aidl.RemoteService">
 
         </service>
