@@ -5,8 +5,39 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.jqk.mydemo.file.video.IjkPlayView
-        android:id="@+id/ijkview"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="500dp"
+        android:gravity="center">
+
+        <com.jqk.mydemo.file.video.IjkPlayView
+            android:id="@+id/ijkview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nowTime"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/allTime"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
 </LinearLayout>
