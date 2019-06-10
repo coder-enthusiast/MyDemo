@@ -10,10 +10,16 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * kotlin单例模式
+ * kotlin单例模式（双重校验锁模式）
  */
-object RetrofitHttpRequest {
-    const val DEFAULT_TIMEOUT: Long = 30
+class RetrofitHttpRequest private constructor() {
+    companion object {
+        val instance: RetrofitHttpRequest by lazy {
+            RetrofitHttpRequest()
+        }
+    }
+
+    val DEFAULT_TIMEOUT: Long = 30
     var mRetrofit: Retrofit
     var retrofitService: RetrofitService
 
@@ -26,7 +32,6 @@ object RetrofitHttpRequest {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
         retrofitService = mRetrofit.create(RetrofitService::class.java)
-        Log.d("123", "初始化retrofit")
     }
 
     fun genericClient(): OkHttpClient {

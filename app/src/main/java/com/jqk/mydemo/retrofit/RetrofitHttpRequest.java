@@ -34,7 +34,7 @@ public class RetrofitHttpRequest {
     }
 
     /**
-     * 仿照官方API的写法
+     * 双重校验锁模式
      *
      * @return RetrofitHttpRequest实例
      */

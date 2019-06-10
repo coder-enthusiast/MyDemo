@@ -7,13 +7,20 @@ class Student : Person {
 
 open class Teacher {
     constructor(name: String)
+
+    companion object Factory {
+        fun create(): Teacher = Teacher("")
+    }
 }
 
 class Doctor : Teacher {
     constructor(name: String) : super(name)
 }
 
-class Ha(): Person() {
+class Doctor2(name: String) : Teacher(name) {
+}
+
+class Ha() : Person() {
     var number = "name"
     val firstProperty = "First property: $number".also(::println)
 }
@@ -40,5 +47,7 @@ class Test {
         fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
             return { x -> f(g(x)) }
         }
+
+        val instance = Teacher.create()
     }
 }

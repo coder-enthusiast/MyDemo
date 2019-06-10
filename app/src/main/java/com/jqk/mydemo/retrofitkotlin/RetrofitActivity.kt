@@ -29,7 +29,7 @@ class RetrofitActivity : AppCompatActivity() {
     }
 
     fun start(view: View) {
-        var call = RetrofitHttpRequest.retrofitService.getNew(type = "top", key = "93ff5c6fd6dc134fc69f6ffe3bc568a6")
+        var call = RetrofitHttpRequest.instance.retrofitService.getNew(type = "top", key = "93ff5c6fd6dc134fc69f6ffe3bc568a6")
         call.enqueue(object : Callback<News> {
             override fun onFailure(call: Call<News>, t: Throwable) {
 

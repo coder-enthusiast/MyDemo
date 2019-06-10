@@ -20,7 +20,7 @@ class NewsModel : BaseModel() {
 
     fun getNews(type: String, key: String, onDataCallback: OnDataCallback<News>) {
 
-        observable1 = RetrofitHttpRequest.retrofitService.getNews(type = type, key = key)
+        observable1 = RetrofitHttpRequest.instance.retrofitService.getNews(type = type, key = key)
         observable1?.run {
             subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -51,9 +51,9 @@ class NewsModel : BaseModel() {
 
 
         Observable.mergeArray(
-                RetrofitHttpRequest.retrofitService.getNews(type1, key),
-                RetrofitHttpRequest.retrofitService.getNews(type2, key),
-                RetrofitHttpRequest.retrofitService.getNews(type3, key))
+                RetrofitHttpRequest.instance.retrofitService.getNews(type1, key),
+                RetrofitHttpRequest.instance.retrofitService.getNews(type2, key),
+                RetrofitHttpRequest.instance.retrofitService.getNews(type3, key))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<News> {
@@ -79,9 +79,9 @@ class NewsModel : BaseModel() {
     fun mapNews(type: String, key: String) {
 
         Observable.zip(
-                RetrofitHttpRequest.retrofitService.getNews(type, key),
-                RetrofitHttpRequest.retrofitService.getNews(type, key),
-                RetrofitHttpRequest.retrofitService.getNews(type, key),
+                RetrofitHttpRequest.instance.retrofitService.getNews(type, key),
+                RetrofitHttpRequest.instance.retrofitService.getNews(type, key),
+                RetrofitHttpRequest.instance.retrofitService.getNews(type, key),
                 object : Function3<News, News, News, DoubleNews> {
                     override fun apply(t1: News, t2: News, t3: News): DoubleNews {
                         return DoubleNews(t1, t2, t3)
