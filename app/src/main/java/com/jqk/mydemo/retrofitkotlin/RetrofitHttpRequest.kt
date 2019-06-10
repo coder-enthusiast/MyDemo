@@ -19,7 +19,6 @@ class RetrofitHttpRequest private constructor() {
         }
     }
 
-
     val DEFAULT_TIMEOUT: Long = 30
     var mRetrofit: Retrofit
     var retrofitService: RetrofitService
