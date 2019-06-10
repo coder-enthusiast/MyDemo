@@ -6,6 +6,9 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 ext.sdkVersion = "28.0.0"
 
 android {
+    lintOptions {
+        abortOnError false
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.jqk.mydemo"
@@ -14,6 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // 方法超过65536
+        multiDexEnabled true
     }
 
     aaptOptions {
@@ -42,6 +47,15 @@ android {
 //            keyPassword "xxxxx"
 //            storeFile file("D:/Android/keystore/xxxxx.jks")
 //            storePassword "xxxxx"
+//        }
+//    }
+
+//    signingConfigs {
+//        config {
+//            storeFile file('D:/Android/key/platform.keystore')
+//        }
+//        debug {
+//            storeFile file('D:/Android/key/platform.keystore')//签名文件路径
 //        }
 //    }
 
@@ -101,6 +115,8 @@ dependencies {
     implementation "com.android.support:support-emoji:28.0.0"
     implementation "com.android.support:support-emoji-appcompat:28.0.0"
     implementation "com.android.support:support-emoji-bundled:28.0.0"
+    // 方法超过65536
+    implementation 'com.android.support:multidex:1.0.3'
 
     implementation project(':loadmorelibrary')
     implementation project(':subsampling-scale-image-view-library')
@@ -136,4 +152,7 @@ dependencies {
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation project(path: ':ijkplayer-java')
+    implementation project(path: ':ijkplayer-exo')
+    implementation project(path: ':ijkplayer-armv7a')
 }

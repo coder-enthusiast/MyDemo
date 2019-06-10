@@ -21,6 +21,14 @@
             android:text="文件夹方式" />
 
         <Button
+            android:id="@+id/dirFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{view::dirFragment}"
+            android:text="文件夹方式Fragment"
+            android:textAllCaps="false" />
+
+        <Button
             android:id="@+id/file"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

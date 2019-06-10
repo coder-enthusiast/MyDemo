@@ -52,7 +52,7 @@ class DirItemAdaper : RecyclerView.Adapter<DirItemAdaper.ViewHolder> {
                     it.name.text = data.files[p1 - data.directorys.size].name
 
                     it.itemView.setOnClickListener {
-                        onClickListener.onFileClick(data.files[p1 - data.directorys.size].name)
+                        onClickListener.onFileClick(data.files[p1 - data.directorys.size].name, data.files[p1 - 1 - data.directorys.size].path)
                     }
                 }
             } else {
@@ -75,7 +75,7 @@ class DirItemAdaper : RecyclerView.Adapter<DirItemAdaper.ViewHolder> {
                     it.img.setImageResource(R.drawable.icon_file)
                     it.name.text = data.files[p1 - 1 - data.directorys.size].name
                     it.itemView.setOnClickListener {
-                        onClickListener.onFileClick(data.files[p1 - 1 - data.directorys.size].name)
+                        onClickListener.onFileClick(data.files[p1 - 1 - data.directorys.size].name, data.files[p1 - 1 - data.directorys.size].path)
                     }
                 }
             }
@@ -89,6 +89,6 @@ class DirItemAdaper : RecyclerView.Adapter<DirItemAdaper.ViewHolder> {
     interface OnClickListener {
         fun onBack(path: String)
         fun onClick(path: String)
-        fun onFileClick(name: String)
+        fun onFileClick(name: String, path: String)
     }
 }
