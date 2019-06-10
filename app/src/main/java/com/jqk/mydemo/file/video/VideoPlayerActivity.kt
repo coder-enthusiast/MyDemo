@@ -1,10 +1,7 @@
 package com.jqk.mydemo.file.video
 
 import android.os.Bundle
-import android.widget.AbsSeekBar
-import android.widget.ProgressBar
-import android.widget.SeekBar
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
 import com.jqk.mydemo.util.L
@@ -14,8 +11,9 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer
 class VideoPlayerActivity : AppCompatActivity() {
     lateinit var ijkPlayer: IjkPlayView
     lateinit var seekBar: SeekBar
-    lateinit var nowTime: TextView
-    lateinit var allTime: TextView
+    lateinit var currentTime: TextView
+    lateinit var endTime: TextView
+    lateinit var ps: ImageView
 
     var path = ""
 
@@ -24,8 +22,9 @@ class VideoPlayerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_videoplayer)
         ijkPlayer = findViewById(R.id.ijkview)
         seekBar = findViewById(R.id.seekBar)
-        nowTime = findViewById(R.id.nowTime)
-        allTime = findViewById(R.id.allTime)
+        currentTime = findViewById(R.id.currentTime)
+        endTime = findViewById(R.id.endTime)
+        ps = findViewById(R.id.ps)
 
         path = intent.getStringExtra("path")
 
@@ -34,6 +33,9 @@ class VideoPlayerActivity : AppCompatActivity() {
 
         ijkPlayer.setPath(path)
         ijkPlayer.seekBar = seekBar
+        ijkPlayer.currentTime = currentTime
+        ijkPlayer.endTime = endTime
+        ijkPlayer.ps = ps
 
     }
 
