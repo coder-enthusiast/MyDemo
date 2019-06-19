@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.jqk.mydemo.R
 import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.service.aidl.AidlActivity
+import com.jqk.mydemo.service.messenger.ActivityMessenger
 
 class ServiceActivity : BaseActivity() {
     lateinit var binding: com.jqk.mydemo.databinding.ActivityServiceBinding
@@ -17,5 +18,9 @@ class ServiceActivity : BaseActivity() {
 
     fun aidl(view: View) {
         jumpActivity(AidlActivity().javaClass)
+    }
+
+    fun messenger(view: View) {
+        jumpActivity(ActivityMessenger().javaClass)
     }
 }

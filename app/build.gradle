@@ -50,14 +50,14 @@ android {
 //        }
 //    }
 
-//    signingConfigs {
-//        config {
-//            storeFile file('D:/Android/key/platform.keystore')
-//        }
-//        debug {
-//            storeFile file('D:/Android/key/platform.keystore')//签名文件路径
-//        }
-//    }
+    signingConfigs {
+        config {
+            storeFile file('D:/Android/key/platform.keystore')
+        }
+        debug {
+            storeFile file('D:/Android/key/platform.keystore')//签名文件路径
+        }
+    }
 
     dataBinding {
         enabled = true

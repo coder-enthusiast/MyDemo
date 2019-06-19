@@ -6,14 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.jqk.mydemo.MainActivity;
 import com.jqk.mydemo.R;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Created by Administrator on 2018/5/28 0028.
@@ -32,6 +37,35 @@ public class ActivityMessenger extends Activity {
      * Flag indicating whether we have called bind on the service.
      */
     boolean mBound;
+
+    private Messenger mMessenger = new Messenger(new MessengerHandler(ActivityMessenger.this));
+
+    // static handler中引用Context对象
+    private static class MessengerHandler extends Handler {
+
+        private final WeakReference<Activity> mActivity;
+        MessengerHandler(Activity activity) {
+            mActivity = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            final Activity activity = mActivity.get();
+            if (activity == null) {
+                removeCallbacksAndMessages(null);
+                return;
+            }
+
+            switch (msg.what) {
+                case MessengerService.MSG_SAY_HELLO2:
+
+                    Toast.makeText(activity, msg.getData().getString("hello"), Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+    }
 
     /**
      * Class for interacting with the main interface of the service.
@@ -61,6 +95,7 @@ public class ActivityMessenger extends Activity {
         Message msg = Message.obtain(null, MessengerService.MSG_SAY_HELLO, 0, 0);
         try {
             mService.send(msg);
+            msg.replyTo = mMessenger;
         } catch (RemoteException e) {
             e.printStackTrace();
         }

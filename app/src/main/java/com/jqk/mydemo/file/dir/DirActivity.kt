@@ -54,7 +54,7 @@ class DirActivity : BaseActivity() {
         intentFilter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
         registerReceiver(broadcastReceiver, intentFilter)
 
-        scanDirectory("/mnt/sdcard/媒体/", true)
+        scanDirectory("/", true)
     }
 
     fun scanDirectory(path: String, isRoot: Boolean) {

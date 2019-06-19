@@ -21,6 +21,12 @@
             android:text="AIDL"
             android:textAllCaps="false" />
 
-
+        <Button
+            android:id="@+id/messenger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{view::messenger}"
+            android:text="Messenger"
+            android:textAllCaps="false" />
     </LinearLayout>
 </layout>

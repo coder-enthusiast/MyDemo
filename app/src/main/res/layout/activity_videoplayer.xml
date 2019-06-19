@@ -7,7 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:gravity="center">
 
         <com.jqk.mydemo.file.video.IjkPlayView
@@ -18,24 +19,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/ps"
-                android:src="@drawable/icon_start"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-        </LinearLayout>
+        android:layout_height="80dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ps"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_start" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 

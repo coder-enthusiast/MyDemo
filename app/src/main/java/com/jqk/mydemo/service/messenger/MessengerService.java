@@ -1,12 +1,19 @@
 package com.jqk.mydemo.service.messenger;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.RemoteException;
 import android.widget.Toast;
+
+import com.jqk.mydemo.util.L;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Created by Administrator on 2018/5/28 0028.
@@ -26,17 +33,39 @@ public class MessengerService extends Service {
      * Command to the service to display a message
      */
     static final int MSG_SAY_HELLO = 1;
+    static final int MSG_SAY_HELLO2 = 2;
 
     /**
      * Handler of incoming messages from clients.
      */
-    class IncomingHandler extends Handler {
+   static class IncomingHandler extends Handler {
+        private final WeakReference<Service> mService;
+        IncomingHandler(Service service) {
+            mService = new WeakReference<>(service);
+        }
+
         @Override
         public void handleMessage(Message msg) {
+            final Service service = mService.get();
+            if (service == null) {
+                removeCallbacksAndMessages(null);
+                return;
+            }
             switch (msg.what) {
                 case MSG_SAY_HELLO:
-                    Toast.makeText(getApplicationContext(), "hello!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(service, "hello!", Toast.LENGTH_SHORT).show();
+                    Messenger client = msg.replyTo;
+                    Message relpyMessage = Message.obtain(null, MSG_SAY_HELLO2, 0, 0);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("hello", "hello too");
+                    relpyMessage.setData(bundle);
+                    try {
+                        client.send(relpyMessage);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                     break;
+
                 default:
                     super.handleMessage(msg);
             }
@@ -46,7 +75,7 @@ public class MessengerService extends Service {
     /**
      * Target we publish for clients to send messages to IncomingHandler.
      */
-    final Messenger mMessenger = new Messenger(new IncomingHandler());
+    final Messenger mMessenger = new Messenger(new IncomingHandler(this));
 
     /**
      * When binding to the service, we return an interface to our messenger

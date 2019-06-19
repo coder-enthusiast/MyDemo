@@ -16,6 +16,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer
 import tv.danmaku.ijk.media.player.IjkTimedText
 import java.util.*
 import java.util.function.IntToLongFunction
+import kotlin.math.max
 
 class IjkPlayView : FrameLayout {
     var mediaPlayer: IMediaPlayer? = null
@@ -188,15 +189,33 @@ class IjkPlayView : FrameLayout {
     val mVideoSizeChangedListener = object : IMediaPlayer.OnVideoSizeChangedListener {
         override fun onVideoSizeChanged(mp: IMediaPlayer?, width: Int, height: Int, sar_num: Int, sar_den: Int) {
             val screenWidth = ScreenUtil.getScreenWidth(context)
-
-            val h = screenWidth / width * height
-
+            val h = screenWidth.toFloat() / width * height
+            val statusH = ScreenUtil.getStatusBarHeight(context)
+            val maxHeight = ScreenUtil.getScreenHeight(context) - (ScreenUtil.getStatusBarHeight(context) + ScreenUtil.getDensity(context) * 80)
+            L.d("screenWidth = " + screenWidth)
+            L.d("width = " + width)
+            L.d("height = " + height)
+            L.d("maxHeight = " + maxHeight)
             L.d("h = " + h)
 
-            val lp = layoutParams
-            lp.width = screenWidth
-            lp.height = h
-            layoutParams = lp
+            if (h > maxHeight) {
+
+                val w = maxHeight / h * screenWidth
+
+                L.d("w = " + w)
+
+                val lp = layoutParams
+                lp.width = w.toInt()
+                lp.height = maxHeight.toInt()
+                layoutParams = lp
+            } else {
+                val lp = layoutParams
+                lp.width = screenWidth
+                lp.height = h.toInt()
+                layoutParams = lp
+            }
+
+
             requestLayout()
         }
     }
@@ -208,7 +227,9 @@ class IjkPlayView : FrameLayout {
 
     val mErrorListener = object : IMediaPlayer.OnErrorListener {
         override fun onError(mp: IMediaPlayer?, what: Int, extra: Int): Boolean {
-            return false
+            L.d("what = " + what)
+            L.d("extra = " + extra)
+            return true;
         }
     }
 
