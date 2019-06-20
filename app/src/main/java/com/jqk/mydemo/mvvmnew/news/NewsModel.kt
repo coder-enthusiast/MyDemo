@@ -50,7 +50,7 @@ class NewsModel : BaseModel() {
 //        RetrofitHttpRequest.retrofitService.getNews(type, key).con
 
 
-        Observable.mergeArray(
+        Observable.concat(
                 RetrofitHttpRequest.instance.retrofitService.getNews(type1, key),
                 RetrofitHttpRequest.instance.retrofitService.getNews(type2, key),
                 RetrofitHttpRequest.instance.retrofitService.getNews(type3, key))
@@ -66,7 +66,7 @@ class NewsModel : BaseModel() {
                     }
 
                     override fun onNext(t: News) {
-                        Log.d("ddd", "News = " + t.toString())
+                        Log.d("concat", "News = " + t.toString())
                     }
 
                     override fun onError(e: Throwable) {

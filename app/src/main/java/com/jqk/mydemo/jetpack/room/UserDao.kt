@@ -31,7 +31,7 @@ interface UserDao {
     fun deleteUsers(vararg users: User)
     // 简单的查询
     @Query("SELECT * FROM users")
-    fun loadAllUsers(): Observable<Array<User>>
+    fun loadAllUsers(): Single<Array<User>>
 //    // 带参数的查询
 //    @Query("SELECT * FROM users WHERE age > :minAge")
 //    fun loadAllUsersOlderThan(minAge: Int): Array<User>

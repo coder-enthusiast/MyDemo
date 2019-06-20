@@ -24,7 +24,11 @@ data class User(
         @ColumnInfo(name = "last_name")
         val lastName: String?,
         val age: Int,
-        val region: String
+        val region: String,
+        // 第一次升级添加的属性
+        val job: String?,
+        // 第二次升级添加的属性
+        val number: String?
         // 忽略字段
 //        @Ignore
 //        var picture: Bitmap?

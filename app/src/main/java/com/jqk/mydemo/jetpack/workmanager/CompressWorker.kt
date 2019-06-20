@@ -36,7 +36,7 @@ class CompressWorker(context: Context, params: WorkerParameters)
         // Indicate success or failure with your return value:
         val id = inputData.getInt("id", 0)
         Log.d("jiqingke", "传入的id = " + id)
-        val user = User(id, "", "", 10, "")
+        val user = User(id, "", "", 10, "","", "")
         val data = Data.Builder().putLong("data", db.userDao().insertUser(user)).build()
         return Result.success(data)
 

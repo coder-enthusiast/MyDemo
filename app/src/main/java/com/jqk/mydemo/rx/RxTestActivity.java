@@ -55,16 +55,15 @@ public class RxTestActivity extends AppCompatActivity {
     Button flowable;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxtest);
         flowable = findViewById(R.id.flowable);
 //        interval();
-//        concat();
+        concat();
 //        zip();
-        flow();
+//        flow();
 //        common();
 
         flowable.setOnClickListener(new View.OnClickListener() {
@@ -282,9 +281,9 @@ public class RxTestActivity extends AppCompatActivity {
      *
      */
     public void zip() {
-        Observable.zip(getStringObservable(), getIntegerObservable(), new BiFunction<String, Integer, String>() {
+        Observable.zip(getStringObservable(), getIntegerObservable(), new BiFunction<String, String, String>() {
             @Override
-            public String apply(String s, Integer integer) throws Exception {
+            public String apply(String s, String integer) throws Exception {
                 return s + integer;
             }
         }).subscribe(new Consumer<String>() {
@@ -296,44 +295,47 @@ public class RxTestActivity extends AppCompatActivity {
     }
 
     /**
-     * concat只能发送just，如果想组合多个自定义的Observable,可以使用merge
-     * merge对onComplete没有反应
+     * concat按顺序发送,merge按时间线并行执行
+     * 组合多个Observable > 4 使用concatArray,mergeArray
      */
     public void concat() {
 
         Observable.concat(
-                Observable.create(new ObservableOnSubscribe<Integer>() {
-                    @Override
-                    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-
-                        emitter.onNext(1);
-//                        emitter.onNext(2);
-//                        emitter.onNext(3);
-//                        emitter.onError(new NullPointerException()); // 发送Error事件，因为无使用concatDelayError，所以第2个Observable将不会发送事件
-//                        emitter.onComplete();
-                    }
-                }),
-                Observable.create(new ObservableOnSubscribe<Integer>() {
-                    @Override
-                    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-
-                        emitter.onNext(1);
-//                        emitter.onNext(2);
-//                        emitter.onNext(3);
-//                        emitter.onError(new NullPointerException()); // 发送Error事件，因为无使用concatDelayError，所以第2个Observable将不会发送事件
-//                        emitter.onComplete();
-                    }
-                }))
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Object>() {
+                Observable.intervalRange(0, 3, 1, 1, TimeUnit.SECONDS), // 从0开始发送、共发送3个数据、第1次事件延迟发送时间 = 1s、间隔时间 = 1s
+                Observable.intervalRange(2, 3, 1, 1, TimeUnit.SECONDS)) // 从2开始发送、共发送3个数据、第1次事件延迟发送时间 = 1s、间隔时间 = 1s
+                .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Object value) {
+                    public void onNext(Long value) {
+                        Log.d(TAG, "接收到了事件" + value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "对Error事件作出响应");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "对Complete事件作出响应");
+                    }
+                });
+
+        Observable.merge(
+                getIntegerObservable(), // 从0开始发送、共发送3个数据、第1次事件延迟发送时间 = 1s、间隔时间 = 1s
+                getStringObservable()) // 从2开始发送、共发送3个数据、第1次事件延迟发送时间 = 1s、间隔时间 = 1s
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(String value) {
                         Log.d(TAG, "接收到了事件" + value);
                     }
 
@@ -485,27 +487,25 @@ public class RxTestActivity extends AppCompatActivity {
     public Observable<String> getStringObservable() {
         return Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter e) throws Exception {
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
                 if (!e.isDisposed()) {
                     e.onNext("A");
                     e.onNext("B");
                     e.onNext("C");
+                } else {
+                    Log.d(TAG, "断流");
                 }
             }
         });
     }
 
-    public Observable<Integer> getIntegerObservable() {
-        return Observable.create(new ObservableOnSubscribe<Integer>() {
+    public Observable<String> getIntegerObservable() {
+        return Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                if (!e.isDisposed()) {
-                    e.onNext(1);
-                    e.onNext(2);
-                    e.onNext(3);
-                    e.onNext(4);
-                    e.onNext(5);
-                }
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                emitter.onNext("A");
+                emitter.onNext("B");
+                emitter.onNext("C");
             }
         });
     }
