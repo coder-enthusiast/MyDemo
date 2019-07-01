@@ -5,6 +5,7 @@ import androidx.databinding.Observable
 import android.util.Log
 import android.view.View
 import com.jqk.mydemo.mvvmnew.base.OnDataCallback
+import com.jqk.mydemo.util.L
 
 class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     val CONTENT: Int = 1
@@ -93,8 +94,15 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     // Activity销毁时，自动调用ViewModel的onDestroy()方法
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
+        L.d("onDestroy")
         Log.d("123", "销毁viewModel")
         newsModel.onDestroy()
+    }
+
+    // 绑定的Activity调用onDestroy时会调用该方法
+    override fun onCleared() {
+        L.d("onCleared")
+        super.onCleared()
     }
 //    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
 //    fun onPause() {

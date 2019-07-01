@@ -23,7 +23,7 @@ class NewsActivity : BaseView() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_news)
-        newsViewModel = ViewModelProviders.of(this).get<NewsViewModel>(NewsViewModel::class.java);
+        newsViewModel = ViewModelProviders.of(this).get<NewsViewModel>(NewsViewModel::class.java)
         // 将binding中的livedata跟LifecycleOwner关联起来
         binding.setLifecycleOwner(this)
         binding.viewModel = newsViewModel

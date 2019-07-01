@@ -7,6 +7,9 @@ import com.jqk.mydemo.R
 import com.jqk.mydemo.util.L
 import tv.danmaku.ijk.media.player.IMediaPlayer
 import tv.danmaku.ijk.media.player.IjkMediaPlayer
+import android.media.MediaMetadataRetriever
+
+
 
 class VideoPlayerActivity : AppCompatActivity() {
     lateinit var ijkPlayer: IjkPlayView
@@ -27,6 +30,25 @@ class VideoPlayerActivity : AppCompatActivity() {
         ps = findViewById(R.id.ps)
 
         path = intent.getStringExtra("path")
+
+        if (path.endsWith(".mp3") || path.endsWith(".ogg")) {
+            val mmr = MediaMetadataRetriever()
+            mmr.setDataSource(path)
+            val title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
+            L.d("title = " + title)
+            val album = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)
+            L.d("album = " + album)
+            val mime = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_MIMETYPE)
+            L.d("mime = " + mime)
+            val artist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)
+            L.d("artist = " + artist)
+            val duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION) // ms
+            L.d("duration = " + duration)
+            val bitrate = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_BITRATE) // bit/s api >= 14
+            L.d("bitrate = " + bitrate)
+            val date = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DATE)
+            L.d("date = " + date)
+        }
 
         IjkMediaPlayer.loadLibrariesOnce(null)
         IjkMediaPlayer.native_profileBegin("libijkplayer.so")
