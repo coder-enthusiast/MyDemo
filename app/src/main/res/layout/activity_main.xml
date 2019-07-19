@@ -28,6 +28,13 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/coroutines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::coroutines}"
+                    android:text="coroutines" />
+
+                <Button
                     android:id="@+id/im"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

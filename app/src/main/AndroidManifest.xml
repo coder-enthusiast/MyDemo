@@ -40,7 +40,11 @@
         <!--android:value="portrait|landscape"/>-->
 
         <activity android:name="com.jqk.mydemo.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name="com.jqk.mydemo.mvp.LoginActivity">
@@ -218,12 +222,10 @@
 
         <activity android:name=".service.messenger.ActivityMessenger"></activity>
         <activity android:name=".coroutines.CoroutinesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".coroutines.MainActivity"></activity>
+        <activity android:name=".coroutines.NetWorkActivity"></activity>
 
         <service android:name="com.jqk.mydemo.service.aidl.RemoteService">
 

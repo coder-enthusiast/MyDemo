@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import android.view.View
 import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.behavior.CustomBehaviorActivity
+import com.jqk.mydemo.coroutines.CoroutinesActivity
+import com.jqk.mydemo.coroutines.MainActivity
 import com.jqk.mydemo.dagger2.DaggerActivity
 import com.jqk.mydemo.databinding.ActivityMainBinding
 import com.jqk.mydemo.file.FileModeActivity
@@ -94,6 +96,10 @@ class MainActivity : BaseActivity() {
 
     fun im(view: View) {
         jumpActivity(IMActivity().javaClass)
+    }
+
+    fun coroutines(view: View) {
+        jumpActivity(MainActivity().javaClass)
     }
 
     fun requestAllPower() {
