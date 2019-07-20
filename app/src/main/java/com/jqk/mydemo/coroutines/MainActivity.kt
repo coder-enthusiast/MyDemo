@@ -8,8 +8,8 @@ import com.jqk.mydemo.R
 import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.databinding.ActivityCoroutinesMainBinding
 
-class MainActivity : BaseActivity(){
-    lateinit var binding : ActivityCoroutinesMainBinding
+class MainActivity : BaseActivity() {
+    lateinit var binding: ActivityCoroutinesMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,5 +27,9 @@ class MainActivity : BaseActivity(){
 
     fun switchThread(view: View) {
         jumpActivity(ThreadSwitchActivity().javaClass)
+    }
+
+    fun channel(view: View) {
+        jumpActivity(ChannelActivity().javaClass)
     }
 }

@@ -5,9 +5,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
 import com.jqk.mydemo.util.L
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class ThreadSwitchActivity : AppCompatActivity() {
     lateinit var start: Button
