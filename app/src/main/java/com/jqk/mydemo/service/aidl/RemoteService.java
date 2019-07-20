@@ -10,6 +10,8 @@ import android.util.Log;
 import com.jqk.mydemo.IRemoteSerciceCallback;
 import com.jqk.mydemo.IRemoteService;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * Created by Administrator on 2018/5/28 0028.
  */

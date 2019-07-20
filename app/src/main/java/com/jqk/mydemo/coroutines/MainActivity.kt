@@ -24,4 +24,8 @@ class MainActivity : BaseActivity(){
     fun demo(view: View) {
         jumpActivity(CoroutinesActivity().javaClass)
     }
+
+    fun switchThread(view: View) {
+        jumpActivity(ThreadSwitchActivity().javaClass)
+    }
 }

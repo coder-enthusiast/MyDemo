@@ -31,9 +31,9 @@ class OkhttpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = DataBindingUtil.setContentView(this, R.layout.activity_okhttp)
         b.view = this
-//        get()
+        get()
 //        post()
-        downloadFile()
+//        downloadFile()
     }
 
     fun buildOkHttpClient(): OkHttpClient {

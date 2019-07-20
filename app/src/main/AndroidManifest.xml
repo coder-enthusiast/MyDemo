@@ -226,6 +226,7 @@
         </activity>
         <activity android:name=".coroutines.MainActivity"></activity>
         <activity android:name=".coroutines.NetWorkActivity"></activity>
+        <activity android:name=".coroutines.ThreadSwitchActivity"></activity>
 
         <service android:name="com.jqk.mydemo.service.aidl.RemoteService">
 
