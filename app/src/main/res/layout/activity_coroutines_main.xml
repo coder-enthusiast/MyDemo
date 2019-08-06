@@ -26,5 +26,19 @@
             android:layout_height="wrap_content"
             android:onClick="@{view::demo}"
             android:text="demo" />
+
+        <Button
+            android:id="@+id/threadSwitch"
+            android:text="线程切换"
+            android:onClick="@{view::switchThread}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/channel"
+            android:text="通道"
+            android:onClick="@{view::channel}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </layout>
