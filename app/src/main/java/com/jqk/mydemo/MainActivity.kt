@@ -45,6 +45,7 @@ class MainActivity : BaseActivity() {
         requestAllPower()
     }
 
+
     fun service(view: View) {
         jumpActivity(ServiceActivity().javaClass)
     }
