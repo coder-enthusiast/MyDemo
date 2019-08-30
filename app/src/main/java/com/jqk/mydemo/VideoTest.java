@@ -1,0 +1,153 @@
+package com.jqk.mydemo;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.exoplayer2.ExoPlaybackException;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.util.Util;
+import com.google.android.exoplayer2.video.VideoListener;
+import com.jqk.mydemo.util.L;
+import com.jqk.mydemo.util.ScreenUtil;
+
+import VideoHandle.EpEditor;
+import VideoHandle.EpVideo;
+import VideoHandle.OnEditorListener;
+
+public class VideoTest extends AppCompatActivity {
+    private SurfaceView surfaceView;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_video);
+        surfaceView = findViewById(R.id.surface_view);
+
+        SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(this);
+        player.setVideoSurfaceView(surfaceView);
+
+        // Produces DataSource instances through which media data is loaded.
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
+                Util.getUserAgent(this, "yourApplicationName"));
+// This is the MediaSource representing the media to be played.
+        MediaSource videoSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(Uri.parse("/sdcard/DCIM/Camera/测试.mp4"));
+// Prepare the player with the source.
+        player.prepare(videoSource);
+
+        player.setPlayWhenReady(true);
+
+        player.addListener(new Player.EventListener() {
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                switch (playbackState) {
+                    case Player.STATE_IDLE: // 播放器停止时的状态以及播放失败时的状态
+                        L.d("STATE_IDLE");
+                        break;
+                    case Player.STATE_BUFFERING: // 加载中
+                        L.d("STATE_BUFFERING");
+                        break;
+                    case Player.STATE_READY: // 准备好
+                        L.d("STATE_READY");
+                        player.setPlayWhenReady(false);
+                        break;
+                    case Player.STATE_ENDED: // 播放完
+                        L.d("STATE_ENDED");
+                        break;
+                }
+            }
+
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+
+            }
+        });
+
+        player.addVideoListener(new VideoListener() {
+            @Override
+            public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
+                L.d("width = " + width);
+                L.d("height = " + height);
+
+                int screenWidth = ScreenUtil.INSTANCE.getScreenWidth(VideoTest.this);
+                float h = (float) screenWidth / width * height;
+                int statusH = ScreenUtil.INSTANCE.getStatusBarHeight(VideoTest.this);
+                float maxHeight = ScreenUtil.INSTANCE.getDensity(VideoTest.this) * 200;
+                L.d("screenWidth = " + screenWidth);
+                L.d("width = " + width);
+                L.d("height = " + height);
+                L.d("maxHeight = " + maxHeight);
+                L.d("h = " + h);
+
+                if (h > maxHeight) {
+
+                    float w = maxHeight / h * screenWidth;
+
+                    L.d("w = " + w);
+
+                    ViewGroup.LayoutParams lp = surfaceView.getLayoutParams();
+                    lp.width = (int) w;
+                    lp.height = (int) maxHeight;
+                    surfaceView.setLayoutParams(lp);
+                } else {
+                    ViewGroup.LayoutParams lp = surfaceView.getLayoutParams();
+                    lp.width = screenWidth;
+                    lp.height = (int) h;
+                    surfaceView.setLayoutParams(lp);
+                }
+            }
+
+            @Override
+            public void onSurfaceSizeChanged(int width, int height) {
+                L.d("width1 = " + width);
+                L.d("height1 = " + height);
+            }
+
+            @Override
+            public void onRenderedFirstFrame() {
+
+            }
+        });
+
+
+//        EpVideo epVideo = new EpVideo("/sdcard/DCIM/Camera/测试.mp4");
+//
+////一个参数为剪辑的起始时间，第二个参数为持续时间,单位：秒
+//        epVideo.clip(1,2);//从第一秒开始，剪辑两秒
+//
+//        //输出选项，参数为输出文件路径(目前仅支持mp4格式输出)
+//        EpEditor.OutputOption outputOption = new EpEditor.OutputOption("/sdcard/DCIM/Camera/123456.mp4");
+//        outputOption.frameRate = 30;//输出视频帧率,默认30
+//        outputOption.bitRate = 10;//输出视频码率,默认10
+//        EpEditor.exec(epVideo, outputOption, new OnEditorListener() {
+//            @Override
+//            public void onSuccess() {
+//                L.d("处理完成");
+//            }
+//
+//            @Override
+//            public void onFailure() {
+//                L.d("处理失败");
+//            }
+//
+//            @Override
+//            public void onProgress(float progress) {
+//                //这里获取处理进度
+//                L.d("progress = " + progress);
+//            }
+//        });
+    }
+}

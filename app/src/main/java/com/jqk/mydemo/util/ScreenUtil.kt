@@ -7,7 +7,7 @@ object ScreenUtil {
      * 获取屏幕密度
      * 单位：Float
      */
-    fun getDensity(context: Context): Float {
+   fun getDensity(context: Context): Float {
         val dm = context.resources.displayMetrics
 
         val density = dm.density

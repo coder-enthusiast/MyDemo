@@ -63,6 +63,7 @@
                     android:layout_height="match_parent"
                     android:onClick="@{view.third}"
                     android:text="third" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
