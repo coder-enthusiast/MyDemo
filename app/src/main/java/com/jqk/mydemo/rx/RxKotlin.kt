@@ -41,6 +41,27 @@ class RxKotlin {
     }
 
     fun map() {
+        Observable.create<Int>{
+            it.onNext(1)
+            it.onComplete()
+        }.subscribe(object : Consumer<Int> {
+            override fun accept(t: Int?) {
+
+            }
+        }, object : Consumer<Throwable> {
+            override fun accept(t: Throwable?) {
+
+            }
+        }, object : Action {
+            override fun run() {
+                L.d("onComplete")
+            }
+        }, object : Consumer<Disposable> {
+            override fun accept(t: Disposable?) {
+
+            }
+        })
+
         Observable.create(object : ObservableOnSubscribe<Int> {
             override fun subscribe(emitter: ObservableEmitter<Int>) {
                 emitter.onNext(1)
@@ -59,29 +80,6 @@ class RxKotlin {
             }
 
             override fun onError(e: Throwable) {
-
-            }
-        })
-
-        Observable.create(object : ObservableOnSubscribe<Int> {
-            override fun subscribe(emitter: ObservableEmitter<Int>) {
-                emitter.onNext(1)
-                emitter.onComplete()
-            }
-        }).subscribe(object : Consumer<Int> {
-            override fun accept(t: Int?) {
-
-            }
-        }, object : Consumer<Throwable> {
-            override fun accept(t: Throwable?) {
-
-            }
-        }, object : Action {
-            override fun run() {
-                L.d("onComplete")
-            }
-        }, object : Consumer<Disposable> {
-            override fun accept(t: Disposable?) {
 
             }
         })
