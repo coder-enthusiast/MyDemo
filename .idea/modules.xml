@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MyDemo.iml" filepath="$PROJECT_DIR$/.idea/MyDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyDemo.iml" filepath="$PROJECT_DIR$/MyDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ijkplayer-armv7a/ijkplayer-armv7a.iml" filepath="$PROJECT_DIR$/ijkplayer-armv7a/ijkplayer-armv7a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ijkplayer-exo/ijkplayer-exo.iml" filepath="$PROJECT_DIR$/ijkplayer-exo/ijkplayer-exo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ijkplayer-java/ijkplayer-java.iml" filepath="$PROJECT_DIR$/ijkplayer-java/ijkplayer-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/loadmorelibrary/loadmorelibrary.iml" filepath="$PROJECT_DIR$/loadmorelibrary/loadmorelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/subsampling-scale-image-view-library/subsampling-scale-image-view-library.iml" filepath="$PROJECT_DIR$/subsampling-scale-image-view-library/subsampling-scale-image-view-library.iml" />
     </modules>

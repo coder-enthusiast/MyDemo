@@ -150,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{view::customBehavior}"
                     android:text="自定义Behavior" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

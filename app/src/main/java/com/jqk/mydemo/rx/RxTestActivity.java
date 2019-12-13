@@ -31,6 +31,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -61,17 +62,19 @@ public class RxTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rxtest);
         flowable = findViewById(R.id.flowable);
 //        interval();
-        concat();
+//        concat();
 //        zip();
 //        flow();
 //        common();
+//
+//        flowable.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                subscription.request(1);
+//            }
+//        });
 
-        flowable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                subscription.request(1);
-            }
-        });
+        interval();
     }
 
     /**
@@ -465,17 +468,39 @@ public class RxTestActivity extends AppCompatActivity {
                 });
     }
 
+    private Disposable disposable;
+
     /**
      * 循环任务
      */
     public void interval() {
-        Observable.interval(3, 2, TimeUnit.SECONDS)
+        Observable<Long> observable =  Observable.interval(1, TimeUnit.SECONDS);
+        observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
+                .subscribe(new Observer<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception {
-                        Log.d(TAG, "accept = " + aLong);
+                    public void onSubscribe(Disposable d) {
+                        disposable = d;
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        if (aLong == 5) {
+                            disposable.dispose();
+                        } else {
+                            L.d(TAG, "循环继续");
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        L.d(TAG, "循环结束");
                     }
                 });
     }

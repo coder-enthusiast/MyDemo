@@ -1,20 +1,13 @@
 package com.jqk.mydemo
 
 import android.Manifest
-import android.content.Context
-import android.media.AudioManager
-import android.media.SoundPool
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import android.util.Log
 import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 import android.view.View
 import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.behavior.CustomBehaviorActivity
-import com.jqk.mydemo.coroutines.CoroutinesActivity
 import com.jqk.mydemo.coroutines.MainActivity
 import com.jqk.mydemo.dagger2.DaggerActivity
 import com.jqk.mydemo.databinding.ActivityMainBinding
@@ -29,7 +22,6 @@ import com.jqk.mydemo.retrofitkotlin.RetrofitActivity
 import com.jqk.mydemo.rx.RxTestActivity
 import com.jqk.mydemo.service.ServiceActivity
 import com.jqk.mydemo.show.showpicture.ShowPictureActivity
-import com.jqk.mydemo.util.L
 import com.jqk.mydemo.webview.WebViewActivityForJava
 import com.tbruyelle.rxpermissions2.RxPermissions
 

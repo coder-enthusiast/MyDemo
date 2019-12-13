@@ -231,6 +231,9 @@
         <activity android:name=".VideoTest">
 
         </activity>
+        <activity android:name=".MediaPlayerActivity">
+
+        </activity>
 
         <service android:name="com.jqk.mydemo.service.aidl.RemoteService">
 

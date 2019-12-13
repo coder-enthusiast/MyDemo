@@ -58,25 +58,21 @@ class NewsActivity : BaseView() {
     }
 
     fun showVeiw(viewType: Int) {
+        binding.contentView.visibility = View.GONE
+        binding.loadingView.visibility = View.GONE
+        binding.errorView.visibility = View.GONE
         when (viewType) {
             CONTENT -> {
                 binding.contentView.visibility = View.VISIBLE
-                binding.loadingView.visibility = View.GONE
-                binding.errorView.visibility = View.GONE
             }
             LOADING -> {
-                binding.contentView.visibility = View.GONE
                 binding.loadingView.visibility = View.VISIBLE
-                binding.errorView.visibility = View.GONE
             }
             ERROR -> {
-                binding.contentView.visibility = View.GONE
-                binding.loadingView.visibility = View.GONE
                 binding.errorView.visibility = View.VISIBLE
             }
         }
     }
-
 
     fun setData(datas: News) {
         var adapter = NewsAdapter(this, datas.result.data)

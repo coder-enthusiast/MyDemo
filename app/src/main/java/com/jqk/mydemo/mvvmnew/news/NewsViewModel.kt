@@ -49,15 +49,16 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        Log.d("123", "removeOnPropertyChangedCallback");
+        L.d("removeOnPropertyChangedCallback")
     }
 
     // bidning设置variable的时候调用
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        Log.d("123", "addOnPropertyChangedCallback");
+        L.d("addOnPropertyChangedCallback")
     }
 
-    fun getData() {
+    fun getData(boolean: Boolean) {
+        L.d("getData传递的参数 = " + boolean)
         showDialog.value = true
         viewType.value = LOADING
         newsModel.getNews("top", "93ff5c6fd6dc134fc69f6ffe3bc568a6", object : OnDataCallback<News> {

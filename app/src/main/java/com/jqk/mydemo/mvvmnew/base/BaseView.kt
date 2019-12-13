@@ -1,37 +1,32 @@
 package com.jqk.mydemo.mvvmnew.base
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.jqk.mydemo.mvp.ProgressDialog
 
 open class BaseView : AppCompatActivity() {
     private var progressDialog: ProgressDialog
-    private var fragmentTransaction: androidx.fragment.app.FragmentTransaction
+    private var fragmentTransaction: FragmentTransaction? = null
 
     init {
         progressDialog = ProgressDialog()
-        fragmentTransaction = supportFragmentManager.beginTransaction()
     }
 
     fun showProgress() {
-        if (progressDialog == null) {
-            progressDialog = ProgressDialog()
+        progressDialog.let {
             fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(progressDialog, "ProgressDialog")
-            if (!progressDialog.isAdded && !progressDialog.isVisible && !progressDialog.isRemoving) {
-                fragmentTransaction.commitAllowingStateLoss()
-            }
-        } else {
-            if (!progressDialog.isAdded && !progressDialog.isVisible && !progressDialog.isRemoving) {
-                fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.add(progressDialog, "ProgressDialog")
-                fragmentTransaction.commitAllowingStateLoss()
+            fragmentTransaction?.add(it, "ProgressDialog")
+            if (!it.isAdded && !it.isVisible && !it.isRemoving) {
+                fragmentTransaction?.commitAllowingStateLoss()
             }
         }
     }
 
     fun hideProgress() {
-        if (progressDialog != null) {
-            progressDialog.dismissAllowingStateLoss()
+        progressDialog.let {
+            if (it.isAdded || it.isVisible || it.isRemoving) {
+                it.dismissAllowingStateLoss()
+            }
         }
     }
 }
