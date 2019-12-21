@@ -13,8 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.github.chrisbanes.photoview.PhotoView;
+import com.jqk.commonlibrary.util.StatusBarUtil;
 import com.jqk.mydemo.R;
-import com.jqk.mydemo.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;

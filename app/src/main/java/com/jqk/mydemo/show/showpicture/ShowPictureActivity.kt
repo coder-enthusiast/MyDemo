@@ -22,7 +22,7 @@ import com.jqk.mydemo.databinding.ActivityShowpictureBinding
 import com.jqk.mydemo.databinding.LayoutViewpagerBinding
 import com.jqk.mydemo.glide.GlideApp
 import com.jqk.mydemo.util.Constants
-import com.jqk.mydemo.util.StatusBarUtil
+import com.jqk.commonlibrary.util.StatusBarUtil
 import io.reactivex.*
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -60,12 +60,12 @@ class ShowPictureActivity : AppCompatActivity(), RecyclerViewAdatper.OnItemClick
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StatusBarUtil.immersive(this)
+        com.jqk.commonlibrary.util.StatusBarUtil.immersive(this)
         b = DataBindingUtil.setContentView(this, R.layout.activity_showpicture)
         val decorView = window.decorView
         val uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         decorView.systemUiVisibility = uiOptions
-        StatusBarUtil.setPaddingSmart(this, b.contentView)
+        com.jqk.commonlibrary.util.StatusBarUtil.setPaddingSmart(this, b.contentView)
         // 小米刘海屏适配
         if (android.os.SystemProperties.getInt("ro.miui.notch", 0) == 1) {
             val flag = 0x00000100 or 0x00000200 or 0x00000400

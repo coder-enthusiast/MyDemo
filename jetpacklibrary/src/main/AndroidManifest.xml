@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jqk.jetpacklibrary">
+
+    <application>
+        <activity android:name=".JetPackActivity"></activity>
+        <activity android:name=".navigation.NavigationActivity">
+
+        </activity>
+        <activity android:name=".navigation.NavigationUIActivity">
+
+        </activity>
+        <activity android:name=".paging.PagingActivity">
+
+        </activity>
+        <activity android:name=".paging.bypage.ByPageActivity">
+
+        </activity>
+        <activity android:name=".paging.byitem.ByItemActivity">
+
+        </activity>
+        <activity android:name=".room.RoomActivity">
+
+        </activity>
+        <activity android:name=".workmanager.WorkManagerActivity">
+
+        </activity>
+    </application>
+</manifest>

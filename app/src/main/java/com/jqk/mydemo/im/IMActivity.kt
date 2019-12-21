@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jqk.mydemo.R
 import com.jqk.mydemo.databinding.ActivityImBinding
-import com.jqk.mydemo.util.L
-import com.jqk.mydemo.util.ScreenUtil
+import com.jqk.commonlibrary.util.L
+import com.jqk.commonlibrary.util.ScreenUtil
 import android.util.Log
 import androidx.annotation.Nullable
 import androidx.core.provider.FontRequest
@@ -120,8 +120,8 @@ class IMActivity : AppCompatActivity(), KeyboardHeightObserver {
             stackFromEnd(itemHeight)
             val add = s?.substring(start, start + count)
 //            Toast.makeText(this@IMActivity, "add = " + add.toString(), Toast.LENGTH_SHORT).show()
-            L.d("add = " + add.toString())
-            L.d("add.length = " + add!!.length)
+            com.jqk.commonlibrary.util.L.d("add = " + add.toString())
+            com.jqk.commonlibrary.util.L.d("add.length = " + add!!.length)
 
             if (add == "") {
                 binding.send.visibility = View.GONE
@@ -249,7 +249,7 @@ class IMActivity : AppCompatActivity(), KeyboardHeightObserver {
     }
 
     fun stackFromEnd(itemHeight: Int) {
-        linearLayoutManager.stackFromEnd = !(itemHeight * ScreenUtil.getDensity(this) * datas.size < binding.recyclerView.height)
+        linearLayoutManager.stackFromEnd = !(itemHeight * com.jqk.commonlibrary.util.ScreenUtil.getDensity(this) * datas.size < binding.recyclerView.height)
     }
 
     fun emoticon(view: View) {
@@ -285,7 +285,7 @@ class IMActivity : AppCompatActivity(), KeyboardHeightObserver {
 
         stackFromEnd(itemHeight)
 
-        L.d("输入的内容 = " + binding.message.text.toString().trim())
+        com.jqk.commonlibrary.util.L.d("输入的内容 = " + binding.message.text.toString().trim())
 
         datas.add(binding.message.text.toString().trim())
         iMAdapter.notifyDataSetChanged()

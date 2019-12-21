@@ -26,6 +26,15 @@ android {
         multiDexEnabled true
     }
 
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'x86_64', 'armeabi-v7a', 'armeabi'
+            universalApk false
+        }
+    }
+
     aaptOptions {
         cruncherEnabled = false
         useNewCruncher = false
@@ -71,34 +80,22 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.room:room-runtime:2.1.0-alpha04'
-    kapt "androidx.room:room-compiler:2.1.0-alpha04"
-    implementation 'android.arch.work:work-runtime-ktx:1.0.0-rc01'
-    implementation 'androidx.room:room-rxjava2:2.1.0-alpha04'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     // rx + retrofit
 //    implementation rootProject.ext.deps.rxJava
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
     implementation 'com.zhy:base-adapter:2.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.ext.depsVersion.kotlin_version"
     implementation 'com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.0.0'
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.ext.depsVersion.kotlin_version"
     // Glide4.0 + 加载https图片
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
@@ -108,11 +105,7 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.1.4'
     // eventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
-    // Android架构组件
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
-    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-beta01'
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-beta01'
-    implementation 'androidx.paging:paging-runtime-ktx:2.1.0-beta01'
+    // 权限申请
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     // dagger2.0
     implementation 'com.google.dagger:dagger:2.11'
@@ -133,6 +126,10 @@ dependencies {
 
     implementation project(':loadmorelibrary')
     implementation project(':subsampling-scale-image-view-library')
+//    implementation project(path: ':filelibrary')
+    implementation project(path: ':jetpacklibrary')
+    implementation project(path: ':commonlibrary')
+    implementation project(path: ':javacvlibrary')
 }
 repositories {
     mavenCentral()
@@ -147,25 +144,4 @@ if (SDK_DIR == null) {
 }
 dependencies {
     compileOnly files("${SDK_DIR}/platforms/android-23/data/layoutlib.jar")
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha11'
-}
-
-dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-}
-
-dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-}
-
-dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-}
-
-dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
-    implementation project(path: ':ijkplayer-java')
-    implementation project(path: ':ijkplayer-exo')
-    implementation project(path: ':ijkplayer-armv7a')
 }

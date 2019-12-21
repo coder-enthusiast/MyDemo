@@ -9,9 +9,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/commonlibrary" />
+            <option value="$PROJECT_DIR$/filelibrary" />
             <option value="$PROJECT_DIR$/ijkplayer-armv7a" />
             <option value="$PROJECT_DIR$/ijkplayer-exo" />
             <option value="$PROJECT_DIR$/ijkplayer-java" />
+            <option value="$PROJECT_DIR$/ijkplayerlibrary" />
+            <option value="$PROJECT_DIR$/javacvlibrary" />
+            <option value="$PROJECT_DIR$/jetpacklibrary" />
             <option value="$PROJECT_DIR$/loadmorelibrary" />
             <option value="$PROJECT_DIR$/subsampling-scale-image-view-library" />
           </set>

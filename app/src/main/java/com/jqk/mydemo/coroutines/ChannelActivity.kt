@@ -2,7 +2,7 @@ package com.jqk.mydemo.coroutines
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.jqk.mydemo.util.L
+import com.jqk.commonlibrary.util.L
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.SendChannel
@@ -15,13 +15,13 @@ class ChannelActivity : AppCompatActivity() {
         runBlocking {
             val numbers = produceNumbers() // 从 1 开始生产整数
             val squares = square(numbers) // 对整数做平方
-            for (i in 1..5) L.d(squares.receive().toString()) // 打印前 5 个数字
-            L.d("Done!") // 我们的操作已经结束了
+            for (i in 1..5) com.jqk.commonlibrary.util.L.d(squares.receive().toString()) // 打印前 5 个数字
+            com.jqk.commonlibrary.util.L.d("Done!") // 我们的操作已经结束了
             coroutineContext.cancelChildren() // 取消子协程
 
             withTimeoutOrNull(20000L) {
                 repeat(1000) { i ->
-                    L.d("I'm sleeping $i ...")
+                    com.jqk.commonlibrary.util.L.d("I'm sleeping $i ...")
                     delay(500L)
                 }
             }

@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jqk.filelibrary" >
+    <application>
+        <activity android:name=".dir.DirActivity"></activity>
+        <activity android:name=".dir.DirFragmentActivity"></activity>
+        <activity android:name=".file.FileActivity"></activity>
+        <activity android:name=".FileModeActivity"></activity>
+
+    </application>
+</manifest>

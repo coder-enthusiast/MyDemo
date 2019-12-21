@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import androidx.appcompat.app.AppCompatActivity
-import com.jqk.mydemo.util.L
+import com.jqk.commonlibrary.util.L
 
 class SoundPoolActivity : AppCompatActivity() {
     lateinit var mAudioManager: AudioManager
@@ -41,24 +41,24 @@ class SoundPoolActivity : AppCompatActivity() {
                     when (n) {
                         1 // 车道左偏离
                         -> {
-                            L.d("左边")
+                            com.jqk.commonlibrary.util.L.d("左边")
                             mAudioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
                             soundPool.setOnLoadCompleteListener { soundPool, sampleId, status ->
                                 soundPool.play(sampleId, 1f, 1f, 1, 0, 1f)//播放
                                 Thread.sleep(1000)
                                 soundPool.play(sampleId, 1f, 1f, 1, 0, 1f)//播放
-                                L.d("status左 = " + status)
+                                com.jqk.commonlibrary.util.L.d("status左 = " + status)
                                 handler.sendEmptyMessageDelayed(1000, 3000)
                             }
                             soundPool.load(this@SoundPoolActivity, R.raw.ldw_left, 1)//加载资源
                         }
                         2 // 车道右偏离
                         -> {
-                            L.d("右边")
+                            com.jqk.commonlibrary.util.L.d("右边")
                             mAudioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
                             soundPool.setOnLoadCompleteListener { soundPool, sampleId, status ->
                                 soundPool.play(sampleId, 1f, 1f, 1, 0, 1f)//播放
-                                L.d("status右 = " + status)
+                                com.jqk.commonlibrary.util.L.d("status右 = " + status)
                                 handler.sendEmptyMessageDelayed(1000, 3000)
                             }
                             soundPool.load(this@SoundPoolActivity, R.raw.ldw_right, 1)//加载资源

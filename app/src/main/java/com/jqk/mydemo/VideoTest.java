@@ -1,33 +1,14 @@
 package com.jqk.mydemo;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.ProgressiveMediaSource;
-import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.util.Util;
-import com.google.android.exoplayer2.video.VideoListener;
-import com.jqk.mydemo.util.L;
-import com.jqk.mydemo.util.ScreenUtil;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.jqk.commonlibrary.util.L;
 
 import VideoHandle.EpEditor;
-import VideoHandle.EpVideo;
 import VideoHandle.OnEditorListener;
 
 public class VideoTest extends AppCompatActivity {

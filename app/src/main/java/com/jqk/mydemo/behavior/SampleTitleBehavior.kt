@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.jqk.mydemo.util.L
+import com.jqk.commonlibrary.util.L
 
 class SampleTitleBehavior : CoordinatorLayout.Behavior<TextView> {
     var deltay: Float = 0f
@@ -24,13 +24,13 @@ class SampleTitleBehavior : CoordinatorLayout.Behavior<TextView> {
             deltay = dependency.y - child.height
         }
 
-        L.d("deltay = " + deltay)
+        com.jqk.commonlibrary.util.L.d("deltay = " + deltay)
 
         var dy = dependency.y - child.height
         dy = if (dy < 0f) 0f else dy
         val y = -(dy / deltay) * child.height
 
-        L.d("y = " + y)
+        com.jqk.commonlibrary.util.L.d("y = " + y)
 
         child.translationY = y
 

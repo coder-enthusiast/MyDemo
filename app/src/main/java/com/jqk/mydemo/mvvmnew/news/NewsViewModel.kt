@@ -5,7 +5,7 @@ import androidx.databinding.Observable
 import android.util.Log
 import android.view.View
 import com.jqk.mydemo.mvvmnew.base.OnDataCallback
-import com.jqk.mydemo.util.L
+import com.jqk.commonlibrary.util.L
 
 class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     val CONTENT: Int = 1
@@ -49,16 +49,16 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        L.d("removeOnPropertyChangedCallback")
+        com.jqk.commonlibrary.util.L.d("removeOnPropertyChangedCallback")
     }
 
     // bidning设置variable的时候调用
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        L.d("addOnPropertyChangedCallback")
+        com.jqk.commonlibrary.util.L.d("addOnPropertyChangedCallback")
     }
 
     fun getData(boolean: Boolean) {
-        L.d("getData传递的参数 = " + boolean)
+        com.jqk.commonlibrary.util.L.d("getData传递的参数 = " + boolean)
         showDialog.value = true
         viewType.value = LOADING
         newsModel.getNews("top", "93ff5c6fd6dc134fc69f6ffe3bc568a6", object : OnDataCallback<News> {
@@ -95,14 +95,14 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     // Activity销毁时，自动调用ViewModel的onDestroy()方法
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        L.d("onDestroy")
+        com.jqk.commonlibrary.util.L.d("onDestroy")
         Log.d("123", "销毁viewModel")
         newsModel.onDestroy()
     }
 
     // 绑定的Activity调用onDestroy时会调用该方法
     override fun onCleared() {
-        L.d("onCleared")
+        com.jqk.commonlibrary.util.L.d("onCleared")
         super.onCleared()
     }
 //    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)

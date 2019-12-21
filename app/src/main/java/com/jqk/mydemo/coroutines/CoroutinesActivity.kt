@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
-import com.jqk.mydemo.util.L
-import kotlinx.android.synthetic.main.activity_coroutines.view.*
+import com.jqk.commonlibrary.util.L
 import kotlinx.coroutines.*
-import kotlinx.coroutines.NonCancellable.isActive
 import kotlinx.coroutines.channels.*
-import kotlin.system.measureTimeMillis
 
 /**
  * 参考 https://github.com/hltj/kotlinx.coroutines-cn/blob/master/ui/coroutines-guide-ui.md
@@ -186,13 +182,13 @@ class CoroutinesActivity : ScopedAppActivity() {
         /**************************************************************************/
         fun setup(hello: TextView, start: View) {
             start.setOnClickListener {
-                L.d("Before launch")
+                com.jqk.commonlibrary.util.L.d("Before launch")
                 GlobalScope.launch(Dispatchers.Main, CoroutineStart.UNDISPATCHED) { // <--- 通知这次改变
-                    L.d("Inside coroutine")
+                    com.jqk.commonlibrary.util.L.d("Inside coroutine")
                     delay(100)                            // <--- 这里是协程挂起的地方
-                    L.d("After delay")
+                    com.jqk.commonlibrary.util.L.d("After delay")
                 }
-                L.d("After launch")
+                com.jqk.commonlibrary.util.L.d("After launch")
             }
         }
 

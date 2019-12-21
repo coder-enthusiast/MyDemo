@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 class EmojiViewPagerAdapter : FragmentPagerAdapter {
     val fragments: ArrayList<Fragment>
 
-    constructor(fm: FragmentManager?, fragments: ArrayList<Fragment>) : super(fm) {
+    constructor(fm: FragmentManager?, fragments: ArrayList<Fragment>) : super(fm!!) {
         this.fragments = fragments
     }
 

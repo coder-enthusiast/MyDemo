@@ -5,7 +5,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import com.jqk.mydemo.R
 import com.jqk.mydemo.im.emojiview.Emoji
-import com.jqk.mydemo.util.L
+import com.jqk.commonlibrary.util.L
 import java.util.regex.Pattern
 
 object MessageUtil {
@@ -42,9 +42,9 @@ object MessageUtil {
         val spanString = SpannableString(message)
         while (matcher.find()) { //匹配器进行匹配
             //打印元文本信息
-            L.d("matcher.group()" + matcher.group())
+            com.jqk.commonlibrary.util.L.d("matcher.group()" + matcher.group())
             val id = MessageUtil.emojiList().get(matcher.group()) ?: 0
-            L.d("id = " + id)
+            com.jqk.commonlibrary.util.L.d("id = " + id)
             if (id == 0) {
                 continue
             }
@@ -54,13 +54,13 @@ object MessageUtil {
 
             allEmojiLength += matcher.group().length
 
-            L.d("start = " + start)
-            L.d("end = " + end)
-            L.d("size = " + allEmojiLength)
+            com.jqk.commonlibrary.util.L.d("start = " + start)
+            com.jqk.commonlibrary.util.L.d("end = " + end)
+            com.jqk.commonlibrary.util.L.d("size = " + allEmojiLength)
 
-            L.d("message = " + message)
+            com.jqk.commonlibrary.util.L.d("message = " + message)
             message = message.replaceFirst(matcher.group(), "")
-            L.d("message2 = " + message)
+            com.jqk.commonlibrary.util.L.d("message2 = " + message)
 
             val drawable = context.getResources().getDrawable(id)
             drawable.setBounds(0, 0, 70, 70)
@@ -82,16 +82,16 @@ object MessageUtil {
         val matcher = Pattern.compile(pattern).matcher(add)
         while (matcher.find()) { //匹配器进行匹配
             hasEmoji = true
-            L.d("匹配到的数据 = " + matcher.group())
+            com.jqk.commonlibrary.util.L.d("匹配到的数据 = " + matcher.group())
             result = uMap.get(matcher.group()) ?: ""
-            L.d("result = " + result)
+            com.jqk.commonlibrary.util.L.d("result = " + result)
 //            L.d("result = " + result)
             if (!result.equals("")) {
                 hasEmoji = true
                 str = str.replace(matcher.group(), result)
-                L.d("str = " + str)
+                com.jqk.commonlibrary.util.L.d("str = " + str)
             } else {
-                L.d("为空")
+                com.jqk.commonlibrary.util.L.d("为空")
             }
         }
 

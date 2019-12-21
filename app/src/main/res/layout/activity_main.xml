@@ -151,6 +151,14 @@
                     android:onClick="@{view::customBehavior}"
                     android:text="自定义Behavior" />
 
+                <Button
+                    android:id="@+id/javaCV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::javaCV}"
+                    android:text="JavaCV"
+                    android:textAllCaps="false" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

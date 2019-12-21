@@ -18,6 +18,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
     <uses-permission
         android:name="android.hardware.usb.host"
         android:required="false" />
@@ -143,32 +145,6 @@
         <activity android:name="com.jqk.mydemo.recyclerview.RecyclerViewAndEditTextActivity">
 
         </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.navigation.NavigationActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.navigation.NavigationUIActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.paging.PagingActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.paging.bypage.ByPageActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.paging.byitem.ByItemActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.room.RoomActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.jetpack.workmanager.WorkManagerActivity">
-
-        </activity>
-
-        <activity android:name="com.jqk.mydemo.JetPackActivity">
-
-        </activity>
-
         <activity android:name="com.jqk.mydemo.service.ServiceActivity">
 
         </activity>
@@ -182,17 +158,6 @@
         </activity>
 
         <activity android:name="com.jqk.mydemo.recyclerview.nesting.NestingActivity">
-
-        </activity>
-
-        <activity android:name="com.jqk.mydemo.file.DirActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.file.FileModeActivity">
-
-        </activity>
-
-        <activity android:name="com.jqk.mydemo.file.file.FileActivity">
 
         </activity>
 
@@ -214,12 +179,6 @@
 
         </activity>
 
-        <activity android:name=".file.dir.DirFragmentActivity"></activity>
-
-        <activity android:name=".file.music.MusicPlayerActivity"></activity>
-
-        <activity android:name=".file.video.VideoPlayerActivity"></activity>
-
         <activity android:name=".service.messenger.ActivityMessenger"></activity>
         <activity android:name=".coroutines.CoroutinesActivity">
 
@@ -234,6 +193,8 @@
         <activity android:name=".MediaPlayerActivity">
 
         </activity>
+        <activity android:name=".javaCV.JavaCVActivity"></activity>
+        <activity android:name=".javaCV.RecordActivity"></activity>
 
         <service android:name="com.jqk.mydemo.service.aidl.RemoteService">
 

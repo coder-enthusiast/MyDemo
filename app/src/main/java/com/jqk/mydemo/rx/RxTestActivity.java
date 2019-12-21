@@ -6,12 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.gson.Gson;
+import com.jqk.commonlibrary.util.L;
 import com.jqk.mydemo.R;
-import com.jqk.mydemo.util.L;
 
 import org.reactivestreams.Subscription;
 
@@ -31,7 +30,6 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;

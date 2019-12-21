@@ -1,6 +1,6 @@
 package com.jqk.mydemo.rx
 
-import com.jqk.mydemo.util.L
+import com.jqk.commonlibrary.util.L
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
@@ -54,7 +54,7 @@ class RxKotlin {
             }
         }, object : Action {
             override fun run() {
-                L.d("onComplete")
+                com.jqk.commonlibrary.util.L.d("onComplete")
             }
         }, object : Consumer<Disposable> {
             override fun accept(t: Disposable?) {
@@ -86,6 +86,6 @@ class RxKotlin {
 
         Observable.create<Int> {
             it.onNext(1)
-        }.subscribe({}, { error -> L.d("error = " + error.toString()) }, {}, { t: Disposable? -> })
+        }.subscribe({}, { error -> com.jqk.commonlibrary.util.L.d("error = " + error.toString()) }, {}, { t: Disposable? -> })
     }
 }

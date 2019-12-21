@@ -1,13 +1,11 @@
 package com.jqk.mydemo.coroutines
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
-import com.jqk.mydemo.util.L
-import kotlinx.android.synthetic.main.activity_okhttp.*
+import com.jqk.commonlibrary.util.L
 import kotlinx.coroutines.*
 import okhttp3.Cache
 import okhttp3.OkHttpClient

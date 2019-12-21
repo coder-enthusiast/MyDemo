@@ -6,8 +6,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jqk.mydemo.util.L;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +16,8 @@ import java.io.PrintWriter;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.jqk.commonlibrary.util.L;
 
 public class ReadActivity extends AppCompatActivity {
     Button read, write;

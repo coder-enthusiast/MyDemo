@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.jqk.mydemo.R
 import com.jqk.mydemo.databinding.ActivityXiaomiBinding
-import com.jqk.mydemo.util.StatusBarUtil
+import com.jqk.commonlibrary.util.StatusBarUtil
 import android.util.Log
 import android.view.Window
 
@@ -16,11 +16,11 @@ class XiaomiActivity : AppCompatActivity() {
     var fullscreen: Boolean = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        StatusBarUtil.immersive(this)
+        com.jqk.commonlibrary.util.StatusBarUtil.immersive(this)
         super.onCreate(savedInstanceState)
         b = DataBindingUtil.setContentView(this, R.layout.activity_xiaomi)
         b.view = this
-        StatusBarUtil.setPadding(this, b.content)
+        com.jqk.commonlibrary.util.StatusBarUtil.setPadding(this, b.content)
         // 小米刘海屏适配
         if (android.os.SystemProperties.getInt("ro.miui.notch", 0) == 1) {
             val flag = 0x00000100 or 0x00000200 or 0x00000400
