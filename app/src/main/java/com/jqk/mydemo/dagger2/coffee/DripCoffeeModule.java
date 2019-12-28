@@ -1,12 +1,15 @@
-package com.jqk.mydemo.dagger2;
+package com.jqk.mydemo.dagger2.coffee;
 
 import dagger.Module;
 import dagger.Provides;
+
 import javax.inject.Singleton;
 
 @Module(includes = PumpModule.class)
 class DripCoffeeModule {
-  @Provides @Singleton Heater provideHeater() {
-    return new ElectricHeater();
-  }
+    @Provides
+    @Singleton
+    Heater provideHeater() {
+        return new ElectricHeater();
+    }
 }

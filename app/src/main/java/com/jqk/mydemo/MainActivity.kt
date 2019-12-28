@@ -6,17 +6,19 @@ import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 import android.view.View
-import com.jqk.filelibrary.FileModeActivity
-import com.jqk.jetpacklibrary.JetPackActivity
+//import com.jqk.filelibrary.FileModeActivity
+//import com.jqk.jetpacklibrary.JetPackActivity
 import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.behavior.CustomBehaviorActivity
 import com.jqk.mydemo.coroutines.MainActivity
-import com.jqk.mydemo.dagger2.DaggerActivity
+import com.jqk.mydemo.dagger2.Dagger2Activity
+import com.jqk.mydemo.dagger2.coffee.DaggerActivity
 import com.jqk.mydemo.databinding.ActivityMainBinding
 import com.jqk.mydemo.glide.GlideActivity
 import com.jqk.mydemo.im.IMActivity
-import com.jqk.mydemo.javaCV.JavaCVActivity
+//import com.jqk.mydemo.javaCV.JavaCVActivity
 import com.jqk.mydemo.liuhai.LiuhaiActivity
+import com.jqk.mydemo.mvvmdagger.NewsActivity
 import com.jqk.mydemo.mvvmnew.NewMVVMActivity
 import com.jqk.mydemo.okhttp.OkhttpActivity
 import com.jqk.mydemo.recyclerview.RecyclerViewActivity
@@ -43,7 +45,7 @@ class MainActivity : BaseActivity() {
 
 
     fun service(view: View) {
-        jumpActivity(ServiceActivity().javaClass)
+        jumpActivity(ServiceActivity::class.java)
     }
 
     fun showPicture(view: View) {
@@ -71,7 +73,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun dagger(view: View) {
-        jumpActivity(DaggerActivity().javaClass)
+        jumpActivity(Dagger2Activity().javaClass)
     }
 
     fun liuhai(view: View) {
@@ -87,7 +89,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun jetpack(view: View) {
-        jumpActivity(JetPackActivity().javaClass)
+//        jumpActivity(JetPackActivity().javaClass)
     }
 
     fun file(view: View) {
@@ -107,7 +109,11 @@ class MainActivity : BaseActivity() {
     }
 
     fun javaCV(view: View) {
-        jumpActivity(JavaCVActivity().javaClass)
+//        jumpActivity(JavaCVActivity().javaClass)
+    }
+
+    fun mvvmdagger(view: View) {
+        jumpActivity(NewsActivity::class.java)
     }
 
     fun requestAllPower() {

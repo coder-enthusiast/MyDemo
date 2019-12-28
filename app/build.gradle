@@ -14,6 +14,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = 1.8
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.jqk.mydemo"
@@ -24,6 +28,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // 方法超过65536
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
 
     splits {
@@ -83,6 +93,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation "androidx.activity:activity-ktx:1.1.0-rc01"
+    implementation "androidx.core:core-ktx:1.0.0"
     // rx + retrofit
 //    implementation rootProject.ext.deps.rxJava
 
@@ -108,8 +122,12 @@ dependencies {
     // 权限申请
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     // dagger2.0
-    implementation 'com.google.dagger:dagger:2.11'
-    kapt 'com.google.dagger:dagger-compiler:2.11'
+    implementation 'com.google.dagger:dagger:2.16'
+    implementation "com.google.dagger:dagger-android:2.16"
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+    implementation "com.google.dagger:dagger-android-support:2.16"
+    implementation "com.google.dagger:dagger-android-processor:2.16"
+
     // 官方emoji兼容库
     implementation "com.android.support:support-emoji:28.0.0"
     implementation "com.android.support:support-emoji-appcompat:28.0.0"
@@ -129,7 +147,7 @@ dependencies {
 //    implementation project(path: ':filelibrary')
     implementation project(path: ':jetpacklibrary')
     implementation project(path: ':commonlibrary')
-    implementation project(path: ':javacvlibrary')
+//    implementation project(path: ':javacvlibrary')
 }
 repositories {
     mavenCentral()

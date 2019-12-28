@@ -32,7 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{view::coroutines}"
-                    android:text="coroutines" />
+                    android:text="coroutines"
+                    android:textAllCaps="false" />
 
                 <Button
                     android:id="@+id/im"
@@ -149,7 +150,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{view::customBehavior}"
-                    android:text="自定义Behavior" />
+                    android:text="自定义Behavior"
+                    android:textAllCaps="false" />
 
                 <Button
                     android:id="@+id/javaCV"
@@ -157,6 +159,14 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{view::javaCV}"
                     android:text="JavaCV"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/mvvmdagger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::mvvmdagger}"
+                    android:text="mvvmdagger"
                     android:textAllCaps="false" />
 
             </LinearLayout>

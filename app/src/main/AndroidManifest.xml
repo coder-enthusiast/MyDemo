@@ -29,7 +29,7 @@
         android:required="true" />
 
     <application
-        android:name=".app.MyApplication"
+        android:name=".mvvmdagger.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -139,9 +139,12 @@
         <activity android:name="com.jqk.mydemo.retrofitkotlin.RetrofitActivity">
 
         </activity>
-        <activity android:name="com.jqk.mydemo.dagger2.DaggerActivity">
+        <activity android:name="com.jqk.mydemo.dagger2.coffee.DaggerActivity">
 
         </activity>
+        <activity android:name=".dagger2.login.LoginActivity"></activity>
+        <activity android:name=".dagger2.Dagger2Activity"></activity>
+        <activity android:name=".mvvmdagger.NewsActivity"></activity>
         <activity android:name="com.jqk.mydemo.recyclerview.RecyclerViewAndEditTextActivity">
 
         </activity>

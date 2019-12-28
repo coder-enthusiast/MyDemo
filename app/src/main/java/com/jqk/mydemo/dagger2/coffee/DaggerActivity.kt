@@ -1,4 +1,4 @@
-package com.jqk.mydemo.dagger2
+package com.jqk.mydemo.dagger2.coffee
 
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle

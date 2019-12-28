@@ -55,6 +55,13 @@ class NewsActivity : BaseView() {
         newsViewModel.viewType.observe(this, Observer {
             showVeiw(it!!)
         })
+
+        // 通过databinding赋值降viewModel中的livedata与布局关联起来
+        binding.a = newsViewModel.a
+
+        newsViewModel.a.observe(this, Observer {
+            Toast.makeText(this, it!!, Toast.LENGTH_SHORT).show()
+        })
     }
 
     fun showVeiw(viewType: Int) {

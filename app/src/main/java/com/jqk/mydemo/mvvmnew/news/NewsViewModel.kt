@@ -42,6 +42,10 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
         MutableLiveData<Int>()
     }
 
+    val a: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     init {
         changeStr.value = "等待改变"
         str.value = "点我加载"
@@ -85,6 +89,7 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
     fun change(view: View) {
         changeStr.value = "已经改变"
         str.value = "改变改变"
+        a.value = "123456"
     }
 
     fun cancel(view: View) {

@@ -4,15 +4,27 @@
 
     <data>
 
+        <import type="androidx.lifecycle.LiveData" />
+
         <variable
             name="viewModel"
             type="com.jqk.mydemo.mvvmnew.news.NewsViewModel"></variable>
+
+        <variable
+            name="a"
+            type="LiveData&lt;String>" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/haha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{a}" />
 
         <LinearLayout
             android:layout_width="match_parent"
