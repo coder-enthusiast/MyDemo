@@ -12,7 +12,6 @@ import com.jqk.mydemo.base.BaseActivity
 import com.jqk.mydemo.behavior.CustomBehaviorActivity
 import com.jqk.mydemo.coroutines.MainActivity
 import com.jqk.mydemo.dagger2.Dagger2Activity
-import com.jqk.mydemo.dagger2.coffee.DaggerActivity
 import com.jqk.mydemo.databinding.ActivityMainBinding
 import com.jqk.mydemo.glide.GlideActivity
 import com.jqk.mydemo.im.IMActivity

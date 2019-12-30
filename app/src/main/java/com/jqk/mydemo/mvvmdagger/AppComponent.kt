@@ -5,7 +5,7 @@ import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [RetrofitModule::class, AndroidInjectionModule::class])
+@Component(modules = [RetrofitModule::class, AndroidInjectionModule::class, ViewModelModule::class])
 interface AppComponent {
     fun newsComponent(): NewsComponent.Factory
 

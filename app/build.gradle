@@ -122,11 +122,11 @@ dependencies {
     // 权限申请
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     // dagger2.0
-    implementation 'com.google.dagger:dagger:2.16'
-    implementation "com.google.dagger:dagger-android:2.16"
-    kapt 'com.google.dagger:dagger-compiler:2.16'
+    implementation "com.google.dagger:dagger:2.16"
+    implementation  "com.google.dagger:dagger-android:2.16"
     implementation "com.google.dagger:dagger-android-support:2.16"
-    implementation "com.google.dagger:dagger-android-processor:2.16"
+    kapt  "com.google.dagger:dagger-compiler:2.16"
+    kapt "com.google.dagger:dagger-android-processor:2.16"
 
     // 官方emoji兼容库
     implementation "com.android.support:support-emoji:28.0.0"

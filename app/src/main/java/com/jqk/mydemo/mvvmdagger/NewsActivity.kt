@@ -13,12 +13,12 @@ import javax.inject.Inject
 class NewsActivity : AppCompatActivity(){
     lateinit var binding: ActivityNews2Binding
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
-//
-//    val viewModel: NewsViewModel by viewModels {
-//        viewModelFactory
-//    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    val viewModel: NewsViewModel by viewModels {
+        viewModelFactory
+    }
 
     lateinit var newComponent: NewsComponent
 
@@ -33,6 +33,6 @@ class NewsActivity : AppCompatActivity(){
     }
 
     fun load(view: View) {
-//        viewModel.getData()
+        viewModel.getData()
     }
 }

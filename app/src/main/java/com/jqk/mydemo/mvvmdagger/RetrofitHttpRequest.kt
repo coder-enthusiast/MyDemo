@@ -1,6 +1,7 @@
 package com.jqk.mydemo.mvvmdagger
 
 import android.util.Log
+import com.jqk.commonlibrary.util.L
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,6 +17,7 @@ class RetrofitHttpRequest {
     var retrofitService: NewsRetroitService
 
     init {
+        L.d("init")
         mRetrofit = Retrofit.Builder()
                 .baseUrl("http://v.juhe.cn/toutiao/")
                 .client(genericClient())
@@ -25,6 +27,8 @@ class RetrofitHttpRequest {
                 .build()
         retrofitService = mRetrofit.create(NewsRetroitService::class.java)
     }
+
+
 
     fun genericClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
