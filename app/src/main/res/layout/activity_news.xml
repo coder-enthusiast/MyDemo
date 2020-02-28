@@ -26,6 +26,13 @@
             android:layout_height="wrap_content"
             android:text="@{a}" />
 
+        <Switch
+            android:id="@+id/switch01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={viewModel.check}"
+            android:text="开关" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"

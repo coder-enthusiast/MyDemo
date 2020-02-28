@@ -54,6 +54,7 @@ class FragmentActivity : AppCompatActivity() {
         when (type) {
             FIRST -> {
                 if (!firstFragment.isAdded) {
+                    supportFragmentManager.beginTransaction().remove(firstFragment).commit()
                     supportFragmentManager.beginTransaction().add(R.id.fragmentView, firstFragment, "firstFragment").commit()
                 } else {
                     supportFragmentManager.beginTransaction().show(firstFragment).commit()
@@ -69,6 +70,7 @@ class FragmentActivity : AppCompatActivity() {
             }
             SECOND -> {
                 if (!secondFragment.isAdded) {
+                    supportFragmentManager.beginTransaction().remove(secondFragment).commit()
                     supportFragmentManager.beginTransaction().add(R.id.fragmentView, secondFragment, "secondFragment").commit()
                 } else {
                     supportFragmentManager.beginTransaction().show(secondFragment).commit()
@@ -84,6 +86,7 @@ class FragmentActivity : AppCompatActivity() {
             }
             THIRD -> {
                 if (!thirdFragment.isAdded) {
+                    supportFragmentManager.beginTransaction().remove(thirdFragment).commit()
                     supportFragmentManager.beginTransaction().add(R.id.fragmentView, thirdFragment, "thirdFragment").commit()
                 } else {
                     supportFragmentManager.beginTransaction().show(thirdFragment).commit()

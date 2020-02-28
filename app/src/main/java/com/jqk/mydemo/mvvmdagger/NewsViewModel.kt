@@ -14,6 +14,10 @@ class NewsViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var newsRetroitService: NewsRetroitService
 
+    init {
+        L.d("初始化NewsViewModel")
+    }
+
     fun getData() {
         L.d("getdata")
         newsRetroitService.getNews("top", "93ff5c6fd6dc134fc69f6ffe3bc568a6")

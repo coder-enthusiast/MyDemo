@@ -37,9 +37,11 @@ public class DBTestActivity extends AppCompatActivity {
         binding.change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               Toast.makeText(DBTestActivity.this, user.userName.get(), Toast.LENGTH_SHORT).show();
                 user.userName.set("456");
             }
         });
+
 
 //        Glide.with(this).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530785850098&di=973db687d2afcb1989c3d2d5d7973015&imgtype=0&src=http%3A%2F%2Fattachments.gfan.com%2Fforum%2F201509%2F23%2F140610ebbookekbr1qbte1.jpg").into(binding.img);
     }

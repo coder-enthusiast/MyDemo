@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.jqk.mydemo.R
 import com.jqk.mydemo.databinding.ActivityNewsBinding
 import com.jqk.mydemo.mvvmnew.base.BaseView
@@ -14,7 +15,9 @@ import com.jqk.mydemo.mvvmnew.base.BaseView
 class NewsActivity : BaseView() {
 
     private lateinit var binding: ActivityNewsBinding
-    private lateinit var newsViewModel: NewsViewModel
+//    private lateinit var newsViewModel: NewsViewModel
+
+    private val newsViewModel: NewsViewModel by viewModels { ViewModelFactory }
 
     val CONTENT: Int = 1
     val LOADING: Int = 2
@@ -23,7 +26,7 @@ class NewsActivity : BaseView() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_news)
-        newsViewModel = ViewModelProviders.of(this).get<NewsViewModel>(NewsViewModel::class.java)
+//        newsViewModel = ViewModelProviders.of(this).get<NewsViewModel>(NewsViewModel::class.java)
         // 将binding中的livedata跟LifecycleOwner关联起来
         binding.setLifecycleOwner(this)
         binding.viewModel = newsViewModel

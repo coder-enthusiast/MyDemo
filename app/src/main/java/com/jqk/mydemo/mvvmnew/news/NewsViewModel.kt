@@ -119,3 +119,10 @@ class NewsViewModel : ViewModel(), LifecycleObserver, Observable {
 //        Log.d("123", "onStart")
 //    }
 }
+
+object ViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        L.d("我返回了ViewModelFactory")
+       return NewsViewModel() as T
+    }
+}
