@@ -4,18 +4,21 @@ import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.jqk.mydemo.R
 import com.jqk.mydemo.databinding.ActivityFragmentBinding
 
 class FragmentActivity : AppCompatActivity() {
-    val FIRST: Int = 1
-    val SECOND: Int = 2
-    val THIRD: Int = 3
+    val FIRST: Int = 0
+    val SECOND: Int = 1
+    val THIRD: Int = 2
 
     lateinit var b: ActivityFragmentBinding
     lateinit var firstFragment: FirstFragment
     lateinit var secondFragment: SecondFragment
     lateinit var thirdFragment: ThirdFragment
+
+    var tabFragments: MutableList<Fragment> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,22 +27,22 @@ class FragmentActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
 
-            if (supportFragmentManager.findFragmentByTag("firstFragment") == null) {
+            if (supportFragmentManager.findFragmentByTag(FirstFragment().javaClass.name) == null) {
                 firstFragment = FirstFragment()
             } else {
-                firstFragment = supportFragmentManager.findFragmentByTag("firstFragment") as FirstFragment
+                firstFragment = supportFragmentManager.findFragmentByTag(FirstFragment().javaClass.name) as FirstFragment
             }
 
-            if (supportFragmentManager.findFragmentByTag("secondFragment") == null) {
+            if (supportFragmentManager.findFragmentByTag(SecondFragment().javaClass.name) == null) {
                 secondFragment = SecondFragment()
             } else {
-                secondFragment = supportFragmentManager.findFragmentByTag("secondFragment") as SecondFragment
+                secondFragment = supportFragmentManager.findFragmentByTag(SecondFragment().javaClass.name) as SecondFragment
             }
 
-            if (supportFragmentManager.findFragmentByTag("thirdFragment") == null) {
+            if (supportFragmentManager.findFragmentByTag(ThirdFragment().javaClass.name) == null) {
                 thirdFragment = ThirdFragment()
             } else {
-                thirdFragment = supportFragmentManager.findFragmentByTag("thirdFragment") as ThirdFragment
+                thirdFragment = supportFragmentManager.findFragmentByTag(ThirdFragment().javaClass.name) as ThirdFragment
             }
         } else {
             firstFragment = FirstFragment()
@@ -47,60 +50,25 @@ class FragmentActivity : AppCompatActivity() {
             thirdFragment = ThirdFragment()
         }
 
+        tabFragments.add(firstFragment)
+        tabFragments.add(secondFragment)
+        tabFragments.add(thirdFragment)
+
         showFragment(FIRST)
     }
 
     fun showFragment(type: Int) {
-        when (type) {
-            FIRST -> {
-                if (!firstFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().remove(firstFragment).commit()
-                    supportFragmentManager.beginTransaction().add(R.id.fragmentView, firstFragment, "firstFragment").commit()
-                } else {
-                    supportFragmentManager.beginTransaction().show(firstFragment).commit()
-                }
-
-                if (secondFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().hide(secondFragment).commit()
-                }
-
-                if (thirdFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().hide(thirdFragment).commit()
-                }
-            }
-            SECOND -> {
-                if (!secondFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().remove(secondFragment).commit()
-                    supportFragmentManager.beginTransaction().add(R.id.fragmentView, secondFragment, "secondFragment").commit()
-                } else {
-                    supportFragmentManager.beginTransaction().show(secondFragment).commit()
-                }
-
-                if (firstFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().hide(firstFragment).commit()
-                }
-
-                if (thirdFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().hide(thirdFragment).commit()
-                }
-            }
-            THIRD -> {
-                if (!thirdFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().remove(thirdFragment).commit()
-                    supportFragmentManager.beginTransaction().add(R.id.fragmentView, thirdFragment, "thirdFragment").commit()
-                } else {
-                    supportFragmentManager.beginTransaction().show(thirdFragment).commit()
-                }
-
-                if (firstFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().hide(firstFragment).commit()
-                }
-
-                if (secondFragment.isAdded) {
-                    supportFragmentManager.beginTransaction().hide(secondFragment).commit()
-                }
-            }
+        val ft = supportFragmentManager.beginTransaction()
+        for (i in tabFragments) {
+            ft.hide(i)
         }
+        if (!tabFragments[type].isAdded) {
+            ft.add(R.id.fragmentView, tabFragments[type], tabFragments[type].javaClass.name)
+            ft.show(tabFragments[type])
+        } else {
+            ft.show(tabFragments[type])
+        }
+        ft.commit()
     }
 
     fun first(view: View) {

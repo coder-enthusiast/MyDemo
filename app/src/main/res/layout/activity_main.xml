@@ -169,6 +169,14 @@
                     android:text="mvvmdagger"
                     android:textAllCaps="false" />
 
+                <Button
+                    android:id="@+id/fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::fragment}"
+                    android:text="Fragment"
+                    android:textAllCaps="false" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

@@ -161,5 +161,5 @@ if (SDK_DIR == null) {
     SDK_DIR = props.get('sdk.dir');
 }
 dependencies {
-    compileOnly files("${SDK_DIR}/platforms/android-23/data/layoutlib.jar")
+    compileOnly files("${SDK_DIR}/platforms/android-19/data/layoutlib.jar")
 }
