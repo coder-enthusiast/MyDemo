@@ -1,5 +1,6 @@
 package com.jqk.mydemo;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.SurfaceView;
 
@@ -8,8 +9,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jqk.commonlibrary.util.L;
 
-import VideoHandle.EpEditor;
-import VideoHandle.OnEditorListener;
+import org.bytedeco.javacv.AndroidFrameConverter;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.Java2DFrameConverter;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.Buffer;
+
+//import VideoHandle.EpEditor;
+//import VideoHandle.OnEditorListener;
 
 public class VideoTest extends AppCompatActivity {
     private SurfaceView surfaceView;
@@ -165,22 +177,125 @@ public class VideoTest extends AppCompatActivity {
 //        }).start();
 
         ////参数分别是视频路径,输出路径（路径用集合的形式，比如pic%03d.jpg,支持jpg和png两种图片格式）,输出图片的宽度，输出图片的高度，每秒输出图片数量（2的话就是每秒2张，0.5f的话就是每两秒一张）
-        EpEditor.video2pic("/sdcard/DCIM/Camera/测试.mp4", "/sdcard/DCIM/Camera/%d.jpg", 100, 100, 1, new OnEditorListener() {
-            @Override
-            public void onSuccess() {
-                L.d("处理完成");
-            }
+//        EpEditor.video2pic("/sdcard/DCIM/Camera/测试.mp4", "/sdcard/DCIM/Camera/%d.jpg", 100, 100, 1, new OnEditorListener() {
+//            @Override
+//            public void onSuccess() {
+//                L.d("处理完成");
+//            }
+//
+//            @Override
+//            public void onFailure() {
+//                L.d("处理失败");
+//            }
+//
+//            @Override
+//            public void onProgress(float progress) {
+//                L.d("progress = " + progress);
+//            }
+//        });
 
-            @Override
-            public void onFailure() {
-                L.d("处理失败");
-            }
+        File file = new File("/sdcard/DCIM/Camera/测试.mp4");
 
+        new Thread(new Runnable() {
             @Override
-            public void onProgress(float progress) {
-                L.d("progress = " + progress);
-            }
-        });
+            public void run() {
+                try {
 
+                    fetchPic(file, "", 2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
+    public static void fetchPic(File file, String framefile, int second) throws Exception {
+        FFmpegFrameGrabber ff = new FFmpegFrameGrabber(file);
+        ff.start();
+        int lenght = ff.getLengthInVideoFrames();
+
+        int i = 0;
+        Frame frame = null;
+        second = 0;
+        while (i < lenght) {
+            L.d("视频帧 = " + i);
+            // 过滤前5帧，避免出现全黑的图片，依自己情况而定
+            frame = ff.grabImage();
+//            Bitmap frameBitmap = new AndroidFrameConverter().convert(frame );
+//            if (i>=(int) (ff.getFrameRate()*second)&&frame.image != null) {
+            if (i == 50) {
+                int a = 1;
+            }
+            if (frame != null && frame.image != null) {
+//                writeToFile(frame, i);
+            }
+//                second++;
+//            }
+            i++;
+        }
+        ff.stop();
+    }
+
+//    public static void writeToFile(Frame frame,int second){
+//        File targetFile = new File("E:/223/"+second+".jpg");
+//        String imgSuffix = "jpg";
+//
+//        Java2DFrameConverter converter =new Java2DFrameConverter();
+//        BufferedImage srcBi =converter.getBufferedImage(frame);
+//        int owidth = srcBi.getWidth();
+//        int oheight = srcBi.getHeight();
+//        // 对截取的帧进行等比例缩放
+//        int width = 800;
+//        int height = (int) (((double) width / owidth) * oheight);
+//        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+//        bi.getGraphics().drawImage(srcBi.getScaledInstance(width, height, Image.SCALE_SMOOTH),0, 0, null);
+//        try {
+//            ImageIO.write(bi, imgSuffix, targetFile);
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public static File getFileFromBytes(byte[] b, String outputFile) {
+        BufferedOutputStream stream = null;
+        File file = null;
+        try {
+            file = new File(outputFile);
+            FileOutputStream fstream = new FileOutputStream(file);
+            stream = new BufferedOutputStream(fstream);
+            stream.write(b);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return file;
+    }
+
+
+    /**
+     * 获取视频时长，单位为秒
+     *
+     * @param file
+     * @return 时长（s）
+     */
+    public static Long getVideoTime(File file) {
+        Long times = 0L;
+        try {
+            FFmpegFrameGrabber ff = new FFmpegFrameGrabber(file);
+            ff.start();
+            times = ff.getLengthInTime() / (1000 * 1000);
+            ff.stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return times;
     }
 }

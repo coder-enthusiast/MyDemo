@@ -6,6 +6,8 @@ import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 import android.view.View
+import com.jqk.javacvlibrary.FFmpegRecordActivity
+import com.jqk.jetpacklibrary.JetPackActivity
 //import com.jqk.filelibrary.FileModeActivity
 //import com.jqk.jetpacklibrary.JetPackActivity
 import com.jqk.mydemo.base.BaseActivity
@@ -89,7 +91,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun jetpack(view: View) {
-//        jumpActivity(JetPackActivity().javaClass)
+        jumpActivity(JetPackActivity().javaClass)
     }
 
     fun file(view: View) {
@@ -118,6 +120,14 @@ class MainActivity : BaseActivity() {
 
     fun fragment(view: View) {
         jumpActivity(FragmentActivity::class.java)
+    }
+
+    fun ffmpegRecord(view: View) {
+        jumpActivity(FFmpegRecordActivity::class.java)
+    }
+
+    fun videoTest(view: View) {
+        jumpActivity(VideoTest::class.java)
     }
 
     fun requestAllPower() {

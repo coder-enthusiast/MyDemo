@@ -137,7 +137,7 @@ dependencies {
     // Kotlin协程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0-M2"
 
-    implementation 'com.github.yangjie10930:EpMedia:v0.9.5'
+//    implementation 'com.github.yangjie10930:EpMedia:v0.9.5'
 
     implementation 'com.google.android.exoplayer:exoplayer-core:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
@@ -147,7 +147,7 @@ dependencies {
 //    implementation project(path: ':filelibrary')
     implementation project(path: ':jetpacklibrary')
     implementation project(path: ':commonlibrary')
-//    implementation project(path: ':javacvlibrary')
+    implementation project(path: ':javacvlibrary')
 }
 repositories {
     mavenCentral()

@@ -1,2 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jqk.javacvlibrary" />
+    package="com.jqk.javacvlibrary">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application>
+
+        <activity android:name=".FFmpegRecordActivity"></activity>
+        <activity android:name=".PlaybackActivity" />
+    </application>
+</manifest>

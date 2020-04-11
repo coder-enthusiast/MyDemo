@@ -177,6 +177,21 @@
                     android:text="Fragment"
                     android:textAllCaps="false" />
 
+                <Button
+                    android:id="@+id/FFmpegRecord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::ffmpegRecord}"
+                    android:text="FFmpegRecord"
+                    android:textAllCaps="false"></Button>
+
+                <Button
+                    android:id="@+id/videoTest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{view::videoTest}"
+                    android:text="videoTest"
+                    android:textAllCaps="false"></Button>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
