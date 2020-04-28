@@ -4,8 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.Toast
+import com.jqk.commonlibrary.util.L
 
 import com.jqk.mydemo.R
+import com.jqk.mydemo.kotlin.kotlinconstruction.Test2
+import com.jqk.mydemo.kotlin.kotlinconstruction.Test3
+import com.jqk.mydemo.kotlin.kotlinconstruction.Test4
 
 class KotlinTestActivity : AppCompatActivity() {
     // 声明时没有直接赋值，用?标记或者使用lateinit修饰一下，lateinit是延迟加载
@@ -26,6 +30,47 @@ class KotlinTestActivity : AppCompatActivity() {
         button?.setOnClickListener {
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
         }
+
+        val test2 = Test2()
+        test2.setaSum { i, i2 ->
+            val a = i + i2
+            L.d("a = " + a)
+            a
+        }
+
+        test2.listener = object : Test2.Listener {
+            override fun onClick(i: Int) {
+                L.d("onClick = " + i)
+            }
+
+            override fun onLongClick(i: Int) {
+                L.d("onLongClick = " + i)
+            }
+        }
+
+        test2.abc()
+
+        val test3 = Test3()
+        test3.callBack { function, function2 ->
+            function {
+                L.d("function = " + it)
+            }
+
+            function2 { value1, value2 ->
+                L.d("function2 = " + value1 + value2)
+            }
+        }
+
+        test3.abc()
+
+        val test4 = Test4()
+        test4.setListener(Test4.CallbacksImpl({
+            L.d("it = " + it)
+        }, {
+            L.d("----打印错误结果---->onError()")
+        }))
+
+        test4.abc()
     }
 }
 
