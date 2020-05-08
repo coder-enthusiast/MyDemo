@@ -4,7 +4,9 @@
     <application>
         <activity android:name=".music.MusicPlayerActivity"></activity>
 
-        <activity android:name=".video.VideoPlayerActivity"></activity>
+        <activity
+            android:name=".video.VideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
 
     </application>
 </manifest>

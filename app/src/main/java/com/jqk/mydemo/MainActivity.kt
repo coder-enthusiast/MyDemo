@@ -6,6 +6,7 @@ import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 import android.view.View
+import com.jqk.filelibrary.FileModeActivity
 import com.jqk.javacvlibrary.FFmpegRecordActivity
 import com.jqk.jetpacklibrary.JetPackActivity
 //import com.jqk.filelibrary.FileModeActivity
@@ -95,7 +96,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun file(view: View) {
-//        jumpActivity(FileModeActivity().javaClass)
+        jumpActivity(FileModeActivity().javaClass)
     }
 
     fun customBehavior(view: View) {

@@ -3,9 +3,11 @@ package com.jqk.ijkplayerlibrary.video
 import android.content.Context
 import android.media.AudioManager
 import android.util.AttributeSet
-import android.view.SurfaceHolder
-import android.view.SurfaceView
-import android.widget.*
+import android.view.*
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.SeekBar
+import android.widget.TextView
 import com.jqk.commonlibrary.util.L
 import com.jqk.commonlibrary.util.ScreenUtil
 import com.jqk.ijkplayerlibrary.R
@@ -15,11 +17,11 @@ import tv.danmaku.ijk.media.player.IjkTimedText
 import java.util.*
 
 class IjkPlayView : FrameLayout {
+    val WIDTH_NORMAL = 400
+
     var mediaPlayer: IMediaPlayer? = null
-
     var surfaceView: SurfaceView? = null
-
-    val v: MediaController? = null
+    var mGestureDetector: GestureDetector? = null
 
     var mPath = ""
 
@@ -31,6 +33,13 @@ class IjkPlayView : FrameLayout {
     var currentTime: TextView? = null
     var endTime: TextView? = null
     var ps: ImageView? = null
+
+    var isFull = false
+
+    var fullScreenWidth = 0
+    var fullScreenHeight = 0
+    var normalScreenWidth = 0
+    var normalScreenHeight = 0
 
     constructor(context: Context) : super(context) {
         initView()
@@ -48,6 +57,16 @@ class IjkPlayView : FrameLayout {
         initPlayer()
         initSurfaceView()
         initPs()
+        initGestureDetector()
+    }
+
+    fun initGestureDetector() {
+        mGestureDetector = GestureDetector(context, mSimpleOnGestureListener)
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        mGestureDetector?.onTouchEvent(event)
+        return true
     }
 
     fun initPs() {
@@ -76,7 +95,7 @@ class IjkPlayView : FrameLayout {
         surfaceView?.let {
             it.getHolder().addCallback(object : SurfaceHolder.Callback {
                 override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
-
+                    L.d("surfaceChanged " + "width = " + width + " height = " + height)
                 }
 
                 override fun surfaceDestroyed(holder: SurfaceHolder?) {
@@ -88,11 +107,9 @@ class IjkPlayView : FrameLayout {
                 }
             })
             val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-            it.setLayoutParams(layoutParams)
+            it.layoutParams = layoutParams
             addView(it)
         }
-
-
     }
 
     fun initPlayer() {
@@ -119,7 +136,7 @@ class IjkPlayView : FrameLayout {
             it.max = 1000
             it.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                    L.d("onProgressChanged")
+//                    L.d("onProgressChanged")
 
                     if (!fromUser) {
                         return
@@ -185,32 +202,30 @@ class IjkPlayView : FrameLayout {
     val mVideoSizeChangedListener = object : IMediaPlayer.OnVideoSizeChangedListener {
         override fun onVideoSizeChanged(mp: IMediaPlayer?, width: Int, height: Int, sar_num: Int, sar_den: Int) {
             val screenWidth = ScreenUtil.getScreenWidth(context)
-            val h = screenWidth.toFloat() / width * height
-            val statusH = ScreenUtil.getStatusBarHeight(context)
-            val maxHeight = ScreenUtil.getScreenHeight(context) - (ScreenUtil.getStatusBarHeight(context) + ScreenUtil.getDensity(context) * 80)
+            val screenHeight = ScreenUtil.getScreenHeight(context)
+            val scale = width / height.toFloat()
+            val scaleS = screenWidth / screenHeight.toFloat()
+
+            L.d("scale = " + scale)
+            L.d("scaleS = " + scaleS)
             L.d("screenWidth = " + screenWidth)
+            L.d("screenHeight = " + screenHeight)
             L.d("width = " + width)
             L.d("height = " + height)
-            L.d("maxHeight = " + maxHeight)
-            L.d("h = " + h)
 
-            if (h > maxHeight) {
+            fullScreenHeight = screenWidth
+            fullScreenWidth = fullScreenHeight * width / height
 
-                val w = maxHeight / h * screenWidth
+            normalScreenHeight = WIDTH_NORMAL
+            normalScreenWidth = normalScreenHeight * width / height
 
-                L.d("w = " + w)
+            L.d("fullScreenHeight = " + fullScreenHeight)
+            L.d("fullScreenWidth = " + fullScreenWidth)
+            L.d("normalScreenHeight = " + normalScreenHeight)
+            L.d("normalScreenWidth = " + normalScreenWidth)
 
-                val lp = layoutParams
-                lp.width = w.toInt()
-                lp.height = maxHeight.toInt()
-                layoutParams = lp
-            } else {
-                val lp = layoutParams
-                lp.width = screenWidth
-                lp.height = h.toInt()
-                layoutParams = lp
-            }
-
+            layoutParams.width = normalScreenWidth
+            layoutParams.height = normalScreenHeight
 
             requestLayout()
         }
@@ -233,6 +248,54 @@ class IjkPlayView : FrameLayout {
         override fun onSeekComplete(mp: IMediaPlayer?) {
 
         }
+    }
+
+    val mSimpleOnGestureListener: GestureDetector.SimpleOnGestureListener = object : GestureDetector.SimpleOnGestureListener() {
+        override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+            return super.onSingleTapConfirmed(e)
+        }
+
+        override fun onDoubleTap(e: MotionEvent): Boolean {
+            // 双击全屏
+            setFullScreen()
+            return super.onDoubleTap(e)
+        }
+
+        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+            return super.onFling(e1, e2, velocityX, velocityY)
+        }
+    }
+
+    fun setFullScreen() {
+        if (isFull) {
+            L.d("正常")
+            val lp = layoutParams
+            lp.width = normalScreenWidth
+            lp.height = normalScreenHeight
+            layoutParams = lp
+
+            val layoutParams = LayoutParams(normalScreenWidth, normalScreenHeight)
+            surfaceView?.layoutParams = layoutParams
+            surfaceView?.requestLayout()
+
+            requestLayout()
+
+        } else {
+            L.d("全屏")
+            val lp = layoutParams
+            lp.width = fullScreenWidth
+            lp.height = fullScreenHeight
+            layoutParams = lp
+
+            val layoutParams = LayoutParams(fullScreenWidth, fullScreenHeight)
+            surfaceView?.layoutParams = layoutParams
+            surfaceView?.requestLayout()
+
+            requestLayout()
+        }
+
+        listener?.onFullScreen(!isFull)
+        isFull = !isFull
     }
 
     fun setPath(path: String) {

@@ -144,7 +144,7 @@ dependencies {
 
     implementation project(':loadmorelibrary')
     implementation project(':subsampling-scale-image-view-library')
-//    implementation project(path: ':filelibrary')
+    implementation project(path: ':filelibrary')
     implementation project(path: ':jetpacklibrary')
     implementation project(path: ':commonlibrary')
     implementation project(path: ':javacvlibrary')

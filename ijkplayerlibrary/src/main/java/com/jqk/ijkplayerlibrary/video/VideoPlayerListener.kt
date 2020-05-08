@@ -1,5 +1,5 @@
 package com.jqk.ijkplayerlibrary.video
 
 interface VideoPlayerListener {
-    fun onPrepared()
+    fun onFullScreen(isFull: Boolean)
 }

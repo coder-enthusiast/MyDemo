@@ -73,8 +73,12 @@ object FileUtils {
                             arrayListOf<CarFile>(),
                             Code.FILE_EMPTY
                     )
+                    // 方便测试用的条件
+                    if (subDirFile.name.equals("媒体") || subDirFile.name.equals("sdcard") ) {
+                        dirList.add(carDirectory)
+                    }
 
-                    dirList.add(carDirectory)
+//                    dirList.add(carDirectory)
                 } else if (subDirFile.isFile) {
                     val dirName = subDirFile.parentFile.name
                     val fileName = subDirFile.name
