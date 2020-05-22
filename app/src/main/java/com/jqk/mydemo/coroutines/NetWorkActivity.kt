@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
 import com.jqk.commonlibrary.util.L
 import kotlinx.coroutines.*
-import okhttp3.Cache
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
+import java.io.IOException
 import java.util.concurrent.TimeUnit
+import kotlin.system.measureTimeMillis
 
 class NetWorkActivity : AppCompatActivity() {
     val url = "https://www.baidu.com/"
@@ -26,17 +26,44 @@ class NetWorkActivity : AppCompatActivity() {
         start.setOnClickListener {
 
             GlobalScope.launch(Dispatchers.IO) {
+                val time = measureTimeMillis {
+                    val one = async { doSomethingUsefulOne() }
+                    val two = async { doSomethingUsefulTwo() }
+                    L.d("The answer is ${one.await() + two.await()}")
+                }
+                L.d("Completed in $time ms")
+
                 val okHttpClient = buildOkHttpClient()
                 val request = Request.Builder().url(url).method("GET", null).build()
-                val response = okHttpClient.newCall(request).execute()
-                val data = response.body()!!.string()
+                val call = okHttpClient.newCall(request)
+
+                var data = ""
+
+                call.enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        data = "e = " + e.toString()
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        data = response.body()!!.string()
+                    }
+                })
+
                 withContext(Dispatchers.Main) {
                     content.text = data
                 }
             }
         }
+    }
 
+    suspend fun doSomethingUsefulOne(): Int {
+        delay(1000L) // 假设我们在这里做了些有用的事
+        return 13
+    }
 
+    suspend fun doSomethingUsefulTwo(): Int {
+        delay(1000L) // 假设我们在这里也做了些有用的事
+        return 29
     }
 
     fun buildOkHttpClient(): OkHttpClient {
