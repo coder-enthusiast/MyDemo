@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.jqk.mydemo.R;
-import com.jqk.mydemo.view.ZoomButton;
+import com.jqk.mydemo.view.ZoomLayout;
 
 public class AnjiActivity extends AppCompatActivity {
 
-    private ZoomButton button;
+    private ZoomLayout button;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,11 +23,19 @@ public class AnjiActivity extends AppCompatActivity {
 
         button = findViewById(R.id.zoomView);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnUpdateListener(new ZoomLayout.OnUpdateListener() {
             @Override
-            public void onClick(View v) {
-                // 动画跳转操作
-                // 按钮动画执行完再跳转
+            public void onStart(View view) {
+
+            }
+
+            @Override
+            public void onStop(View view) {
+
+            }
+
+            @Override
+            public void onClick() {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         ActivityOptionsCompat compat = ActivityOptionsCompat.makeCustomAnimation(AnjiActivity.this, R.anim.activity_enter, R.anim.activity_exit);

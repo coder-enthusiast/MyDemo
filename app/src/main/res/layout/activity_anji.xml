@@ -5,11 +5,11 @@
     android:background="#124578"
     android:gravity="center">
 
-    <com.jqk.mydemo.view.ZoomButton
+    <com.jqk.mydemo.view.ZoomLayout
         android:id="@+id/zoomView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/circle"
-        android:text="haha"></com.jqk.mydemo.view.ZoomButton>
+        android:text="haha"></com.jqk.mydemo.view.ZoomLayout>
 
 </LinearLayout>

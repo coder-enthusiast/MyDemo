@@ -24,7 +24,8 @@ class NetWorkActivity : AppCompatActivity() {
         content = findViewById(R.id.content)
         start = findViewById(R.id.start)
         start.setOnClickListener {
-            GlobalScope.launch(newSingleThreadContext("newThread")) {
+
+            GlobalScope.launch(Dispatchers.IO) {
                 val okHttpClient = buildOkHttpClient()
                 val request = Request.Builder().url(url).method("GET", null).build()
                 val response = okHttpClient.newCall(request).execute()

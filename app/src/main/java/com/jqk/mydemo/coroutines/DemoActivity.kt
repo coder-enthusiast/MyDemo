@@ -4,19 +4,24 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
 import com.jqk.commonlibrary.util.L
+import kotlinx.android.synthetic.main.activity_coroutines.*
 import kotlinx.coroutines.*
+import kotlin.concurrent.thread
+
 
 class DemoActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines)
 
-//        firstMain()
+        firstMain()
 //        secondMain()
 //        thirdMain()
 //        fourthMain()
 //        fifthMain()
-        sixthMain()
+//        sixthMain()
     }
 
     fun firstMain() {

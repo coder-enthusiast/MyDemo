@@ -190,6 +190,7 @@
         <activity android:name=".coroutines.NetWorkActivity"></activity>
         <activity android:name=".coroutines.ThreadSwitchActivity"></activity>
         <activity android:name=".coroutines.ChannelActivity"></activity>
+        <activity android:name=".coroutines.DemoActivity"></activity>
         <activity android:name=".VideoTest">
 
         </activity>
