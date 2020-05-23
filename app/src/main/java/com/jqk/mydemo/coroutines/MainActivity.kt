@@ -36,4 +36,8 @@ class MainActivity : BaseActivity() {
     fun channel(view: View) {
         jumpActivity(ChannelActivity().javaClass)
     }
+
+    fun flow(view: View) {
+        jumpActivity(FlowActivity().javaClass)
+    }
 }

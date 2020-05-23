@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jqk.mydemo.R
 import com.jqk.commonlibrary.util.L
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import okhttp3.*
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -18,6 +21,10 @@ class NetWorkActivity : AppCompatActivity() {
     lateinit var start: Button
     lateinit var content: TextView
 
+
+    var job: Job? = null
+    var job2: Job? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines_network)
@@ -25,35 +32,61 @@ class NetWorkActivity : AppCompatActivity() {
         start = findViewById(R.id.start)
         start.setOnClickListener {
 
-            GlobalScope.launch(Dispatchers.IO) {
-                val time = measureTimeMillis {
-                    val one = async { doSomethingUsefulOne() }
-                    val two = async { doSomethingUsefulTwo() }
-                    L.d("The answer is ${one.await() + two.await()}")
-                }
-                L.d("Completed in $time ms")
+            job = GlobalScope.launch(Dispatchers.IO) {
+                //                val time = measureTimeMillis {
+//                    val one = async { doSomethingUsefulOne() }
+//                    val two = async { doSomethingUsefulTwo() }
+//                    L.d("The answer is ${one.await() + two.await()}")
+//                }
+//                L.d("Completed in $time ms")
 
-                val okHttpClient = buildOkHttpClient()
-                val request = Request.Builder().url(url).method("GET", null).build()
-                val call = okHttpClient.newCall(request)
+//                val data = networkRequest()
+//                withContext(Dispatchers.Main) {
+//                    delay(5000L)
+//
+//                    L.d("设置界面")
+//                    content.text = data
+//                }
 
-                var data = ""
-
-                call.enqueue(object : Callback {
-                    override fun onFailure(call: Call, e: IOException) {
-                        data = "e = " + e.toString()
+                networkRequestFlow().collect { value ->
+                    withContext(Dispatchers.Main) {
+                        L.d("设置界面")
+                        if (isActive) {
+                            content.text = value
+                        }
                     }
-
-                    override fun onResponse(call: Call, response: Response) {
-                        data = response.body()!!.string()
-                    }
-                })
-
-                withContext(Dispatchers.Main) {
-                    content.text = data
                 }
             }
         }
+    }
+
+    fun networkRequestFlow(): Flow<String> = flow {
+        val okHttpClient = buildOkHttpClient()
+        val request = Request.Builder().url(url).method("GET", null).build()
+
+        var data = ""
+
+        try {
+            data = okHttpClient.newCall(request).execute().body()!!.string()
+        } catch (e: Exception) {
+            data = e.toString()
+        }
+        emit(data)
+    }
+
+    suspend fun networkRequest(): String {
+        val okHttpClient = buildOkHttpClient()
+        val request = Request.Builder().url(url).method("GET", null).build()
+
+        var data = ""
+
+        try {
+            data = okHttpClient.newCall(request).execute().body()!!.string()
+        } catch (e: Exception) {
+            data = e.toString()
+        }
+
+        return data
     }
 
     suspend fun doSomethingUsefulOne(): Int {
@@ -75,5 +108,10 @@ class NetWorkActivity : AppCompatActivity() {
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .build()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job?.cancel()
     }
 }
