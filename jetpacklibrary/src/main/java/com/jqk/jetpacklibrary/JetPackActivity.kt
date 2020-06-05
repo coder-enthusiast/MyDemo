@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.jqk.jetpacklibrary.databinding.ActivityJetpackBinding
+import com.jqk.jetpacklibrary.databinding.DBTestActivity
 import com.jqk.jetpacklibrary.navigation.NavigationActivity
 import com.jqk.jetpacklibrary.navigation.NavigationUIActivity
 import com.jqk.jetpacklibrary.paging.PagingActivity
@@ -19,6 +20,10 @@ class JetPackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_jetpack)
         binding.view = this
+    }
+
+    fun databinding(view: View) {
+        jumpActivity(DBTestActivity().javaClass)
     }
 
     fun navigation(view: View) {

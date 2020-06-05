@@ -1,27 +1,24 @@
-package com.jqk.mydemo.databinding;
+package com.jqk.jetpacklibrary.databinding;
 
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-//import com.bumptech.glide.Glide;
-//import com.bumptech.glide.request.RequestOptions;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.jqk.mydemo.R;
+import com.jqk.jetpacklibrary.R;
 
 public class DBTestActivity extends AppCompatActivity {
 
-    private com.jqk.mydemo.databinding.ActivityDbtestBinding binding;
+    private ActivityDbtestBinding binding;
     private User user;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +28,7 @@ public class DBTestActivity extends AppCompatActivity {
         user = new User();
         user.userName.set("123");
         user.url.set("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530785850098&di=973db687d2afcb1989c3d2d5d7973015&imgtype=0&src=http%3A%2F%2Fattachments.gfan.com%2Fforum%2F201509%2F23%2F140610ebbookekbr1qbte1.jpg");
-        user.id.set(R.mipmap.ic_launcher);
+        user.id.set(R.drawable.ic_launcher);
         binding.setUser(user);
 
         binding.change.setOnClickListener(new View.OnClickListener() {

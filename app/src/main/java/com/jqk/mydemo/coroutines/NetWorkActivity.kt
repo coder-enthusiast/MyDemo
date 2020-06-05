@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.jqk.mydemo.R
 import com.jqk.commonlibrary.util.L
 import kotlinx.coroutines.*
@@ -32,7 +33,8 @@ class NetWorkActivity : AppCompatActivity() {
         start = findViewById(R.id.start)
         start.setOnClickListener {
 
-            job = GlobalScope.launch(Dispatchers.IO) {
+//            lifecycleScope跟LifecycleOwner绑定,LifecycleOwner被销毁时协程取消
+            job = lifecycleScope.launch(Dispatchers.IO) {
                 //                val time = measureTimeMillis {
 //                    val one = async { doSomethingUsefulOne() }
 //                    val two = async { doSomethingUsefulTwo() }
@@ -50,6 +52,7 @@ class NetWorkActivity : AppCompatActivity() {
 
                 networkRequestFlow().collect { value ->
                     withContext(Dispatchers.Main) {
+                        delay(5000L)
                         L.d("设置界面")
                         if (isActive) {
                             content.text = value

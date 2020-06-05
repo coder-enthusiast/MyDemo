@@ -24,5 +24,6 @@
         <activity android:name=".workmanager.WorkManagerActivity">
 
         </activity>
+        <activity android:name=".databinding.DBTestActivity"></activity>
     </application>
 </manifest>

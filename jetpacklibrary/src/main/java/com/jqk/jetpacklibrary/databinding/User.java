@@ -1,4 +1,4 @@
-package com.jqk.mydemo.databinding;
+package com.jqk.jetpacklibrary.databinding;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.ObservableField;

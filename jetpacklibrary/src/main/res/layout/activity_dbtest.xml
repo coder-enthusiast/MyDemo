@@ -7,11 +7,11 @@
 
         <variable
             name="user"
-            type="com.jqk.mydemo.databinding.User"></variable>
+            type="com.jqk.jetpacklibrary.databinding.User"></variable>
 
         <variable
             name="view"
-            type="com.jqk.mydemo.databinding.DBTestActivity"></variable>
+            type="com.jqk.jetpacklibrary.databinding.DBTestActivity"></variable>
     </data>
 
     <!--<data>-->
