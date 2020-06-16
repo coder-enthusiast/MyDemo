@@ -60,5 +60,13 @@
             android:onClick="@{view::workManager}"
             android:text="WorkManager"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/viewModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{view::viewModel}"
+            android:text="viewModel"
+            android:textAllCaps="false" />
     </LinearLayout>
 </layout>

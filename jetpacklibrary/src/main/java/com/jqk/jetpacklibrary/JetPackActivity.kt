@@ -11,6 +11,7 @@ import com.jqk.jetpacklibrary.navigation.NavigationActivity
 import com.jqk.jetpacklibrary.navigation.NavigationUIActivity
 import com.jqk.jetpacklibrary.paging.PagingActivity
 import com.jqk.jetpacklibrary.room.RoomActivity
+import com.jqk.jetpacklibrary.viewmodel.ViewModelActivity
 import com.jqk.jetpacklibrary.workmanager.WorkManagerActivity
 
 class JetPackActivity : AppCompatActivity() {
@@ -44,6 +45,10 @@ class JetPackActivity : AppCompatActivity() {
 
     fun workManager(view: View) {
         jumpActivity(WorkManagerActivity().javaClass)
+    }
+
+    fun viewModel(view: View) {
+        jumpActivity(ViewModelActivity().javaClass)
     }
 
     fun jumpActivity(clazz: Class<Any>) {
