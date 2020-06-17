@@ -11,6 +11,9 @@ import com.jqk.commonlibrary.util.L;
 import com.jqk.jetpacklibrary.R;
 import com.jqk.jetpacklibrary.databinding.ActivityViewmodelBinding;
 
+/**
+ * checkbox,switch尽量不要使用双向绑定
+ */
 public class ViewModelActivity extends AppCompatActivity {
     private ActivityViewmodelBinding binding;
     private MyViewModel myViewModel;
@@ -31,6 +34,7 @@ public class ViewModelActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean aBoolean) {
                 L.d("aBoolean = " + aBoolean);
+//                binding.checkbox02.setChecked(!aBoolean);
             }
         });
 
@@ -38,12 +42,16 @@ public class ViewModelActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean aBoolean) {
                 L.d("aBoolean2 = " + aBoolean);
+//                binding.checkbox.setChecked(!aBoolean);
             }
         });
 
-        myViewModel.initView();
+        binding.checkbox.setChecked(true);
+        binding.checkbox02.setChecked(false);
 
-        myViewModel.getCheck().setValue(false);
-        myViewModel.getCheck2().setValue(true);
+//        myViewModel.initView();
+//
+//        myViewModel.getCheck().setValue(false);
+//        myViewModel.getCheck2().setValue(true);
     }
 }
