@@ -153,6 +153,36 @@ public class RxTestActivity extends AppCompatActivity {
                         Log.d(TAG, "After observeOn(io)，Current thread is " + Thread.currentThread().getName());
                     }
                 });
+
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+
+            }
+        })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
     }
 
     // 背压
@@ -472,7 +502,7 @@ public class RxTestActivity extends AppCompatActivity {
      * 循环任务
      */
     public void interval() {
-        Observable<Long> observable =  Observable.interval(1, TimeUnit.SECONDS);
+        Observable<Long> observable = Observable.interval(1, TimeUnit.SECONDS);
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

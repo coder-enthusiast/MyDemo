@@ -58,6 +58,14 @@ android {
         }
     }
 
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //在这里修改apk文件名
+                outputFileName = "AllDemo.apk"
+            }
+    }
+
 //    // 签名配置
 //    signingConfigs {
 //        debugConfig {

@@ -5,9 +5,11 @@ import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 
 class RxKotlin {
 
@@ -41,7 +43,7 @@ class RxKotlin {
     }
 
     fun map() {
-        Observable.create<Int>{
+        Observable.create<Int> {
             it.onNext(1)
             it.onComplete()
         }.subscribe(object : Consumer<Int> {
@@ -66,23 +68,26 @@ class RxKotlin {
             override fun subscribe(emitter: ObservableEmitter<Int>) {
                 emitter.onNext(1)
             }
-        }).subscribe(object : Observer<Int> {
-            override fun onComplete() {
-
-            }
-
-            override fun onSubscribe(d: Disposable) {
-
-            }
-
-            override fun onNext(t: Int) {
-
-            }
-
-            override fun onError(e: Throwable) {
-
-            }
         })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(object : Observer<Int> {
+                    override fun onComplete() {
+
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onNext(t: Int) {
+
+                    }
+
+                    override fun onError(e: Throwable) {
+
+                    }
+                })
 
         Observable.create<Int> {
             it.onNext(1)
