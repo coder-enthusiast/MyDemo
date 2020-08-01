@@ -16,19 +16,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Created by Administrator on 2018/5/28 0028.
  */
 
-//调用类必须执行以下步骤，才能调用使用 AIDL 定义的远程接口：
-//
-//        在项目 src/ 目录中加入 .aidl 文件。
-//        声明一个 IBinder 接口实例（基于 AIDL 生成）。
-//        实现 ServiceConnection。
-//        调用 Context.bindService()，以传入您的 ServiceConnection 实现。
-//        在您的 onServiceConnected() 实现中，您将收到一个 IBinder 实例（名为 service）。调用 YourInterfaceName.Stub.asInterface((IBinder)service)，以将返回的参数转换为 YourInterface 类型。
-//        调用您在接口上定义的方法。您应该始终捕获 DeadObjectException 异常，它们是在连接中断时引发的；这将是远程方法引发的唯一异常。
-//        如需断开连接，请使用您的接口实例调用 Context.unbindService()。
-//        有关调用 IPC 服务的几点说明：
-//
-//        对象是跨进程计数的引用。
-//        您可以将匿名对象作为方法参数发送。
+/**
+ * 调用类必须执行以下步骤，才能调用使用 AIDL 定义的远程接口：
+ *
+ *         在项目 src/main/aidl 目录中加入 .aidl 文件。
+ *         声明一个 IBinder 接口实例（基于 AIDL 生成）。
+ *         实现 ServiceConnection。
+ *         调用 Context.bindService()，以传入您的 ServiceConnection 实现。
+ *         在您的 onServiceConnected() 实现中，您将收到一个 IBinder 实例（名为 service）。
+ *         调用 YourInterfaceName.Stub.asInterface((IBinder)service)，以将返回的参数转换为 YourInterface 类型。
+ *         调用您在接口上定义的方法。您应该始终捕获 DeadObjectException 异常，它们是在连接中断时引发的；这将是远程方法引发的唯一异常。
+ *         如需断开连接，请使用您的接口实例调用 Context.unbindService()。
+ *         有关调用 IPC 服务的几点说明：
+ *
+ *         对象是跨进程计数的引用。
+ *         您可以将匿名对象作为方法参数发送。
+ */
 
 public class RemoteService extends Service {
 
