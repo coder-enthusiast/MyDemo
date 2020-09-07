@@ -3,6 +3,7 @@ package com.jqk.mydemo.service.aidl;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -44,7 +45,7 @@ public class AidlActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         try {
-            Toast.makeText(this, mIRemoteService.getPid() + "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, mIRemoteService.getPid(new Rect(2, 2, 2, 2)) + "", Toast.LENGTH_SHORT).show();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -85,8 +86,8 @@ public class AidlActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onFail() throws RemoteException {
-            Log.d("jiqingke", "onError");
+        public void onFail(Rect rect) throws RemoteException {
+            Log.d("jiqingke", "onFail = " + rect.toString());
         }
     };
 

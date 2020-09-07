@@ -5,7 +5,7 @@ import com.jqk.mydemo.IRemoteSerciceCallback;
 
 interface IRemoteService {
     /** Request the process ID of this service, to do evil things with it. */
-    int getPid();
+    int getPid(in Rect rect);
 
     void registerCallback(IRemoteSerciceCallback callback);
 

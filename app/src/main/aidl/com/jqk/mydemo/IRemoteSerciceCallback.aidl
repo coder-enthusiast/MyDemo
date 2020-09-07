@@ -11,6 +11,6 @@ interface IRemoteSerciceCallback {
 
     void onSuccess(int code);
 
-    void onFail();
+    void onFail(in Rect rect);
 
 }
