@@ -29,6 +29,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
@@ -498,18 +499,23 @@ public class RxTestActivity extends AppCompatActivity {
 
     private Disposable disposable;
 
+    Observable<Long> intervalObservable;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+
     /**
      * 循环任务
      */
     public void interval() {
-        Observable<Long> observable = Observable.interval(1, TimeUnit.SECONDS);
-        observable
+        intervalObservable = Observable.interval(1, TimeUnit.SECONDS);
+        intervalObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposable = d;
+
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -531,6 +537,16 @@ public class RxTestActivity extends AppCompatActivity {
                         L.d(TAG, "循环结束");
                     }
                 });
+    }
+
+    public void stopInterval() {
+        if (intervalObservable != null) {
+            intervalObservable.unsubscribeOn(Schedulers.io());
+        }
+
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
     }
 
 //    public void put() {
