@@ -1,6 +1,9 @@
 package com.jqk.mydemo;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +17,13 @@ public class TestActivity extends AppCompatActivity {
 
     private Button button, start, stop;
     private RippleView rippleView;
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,5 +61,20 @@ public class TestActivity extends AppCompatActivity {
         rippleView.setColor("#459021");
         rippleView.setNewCircleTime(500);
         rippleView.start();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("123");
+        registerReceiver(broadcastReceiver, intentFilter);
+
+        Intent intent = new Intent();
+        intent.setAction("123");
+        sendBroadcast(intent);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
     }
 }

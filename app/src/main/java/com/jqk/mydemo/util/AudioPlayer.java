@@ -1,7 +1,9 @@
 package com.jqk.mydemo.util;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.provider.MediaStore;
 
 import com.jqk.commonlibrary.util.L;
 import com.jqk.mydemo.R;
