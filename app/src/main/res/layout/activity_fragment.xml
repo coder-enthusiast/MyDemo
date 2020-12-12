@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout>
 
     <data>
 
         <variable
             name="view"
-            type="com.jqk.mydemo.fragment.FragmentActivity"></variable>
+            type="com.jqk.mydemo.fragment.FragmentActivity" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,58 +14,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/fragmentView"
+        <Button
+            android:id="@+id/normal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:onClick="@{view::normal}"
+            android:text="Normal"
+            android:textAllCaps="false" />
 
-        </FrameLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/first"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:onClick="@{view.first}"
-                    android:text="first" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/second"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:onClick="@{view.second}"
-                    android:text="second" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/third"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:onClick="@{view.third}"
-                    android:text="third" />
-
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:onClick="@{view::viewPager}"
+            android:text="viewPager"
+            android:textAllCaps="false" />
     </LinearLayout>
+
+
 </layout>

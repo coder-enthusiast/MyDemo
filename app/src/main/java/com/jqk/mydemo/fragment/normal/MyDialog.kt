@@ -1,4 +1,4 @@
-package com.jqk.mydemo.fragment
+package com.jqk.mydemo.fragment.normal
 
 import android.app.Dialog
 import android.os.Bundle

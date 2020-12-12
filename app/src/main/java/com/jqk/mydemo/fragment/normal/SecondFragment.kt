@@ -1,4 +1,4 @@
-package com.jqk.mydemo.fragment
+package com.jqk.mydemo.fragment.normal
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jqk.mydemo.R
+import com.jqk.mydemo.fragment.normal.MyDialog
 
 class SecondFragment : Fragment() {
     var isFirst: Boolean = true

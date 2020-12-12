@@ -61,9 +61,6 @@
         <activity android:name="com.jqk.mydemo.rx.RxTestActivity">
 
         </activity>
-        <activity android:name="com.jqk.mydemo.databinding.DBTestActivity">
-
-        </activity>
         <activity android:name="com.jqk.mydemo.nestedscrolling.NestedScrollingActivity">
 
         </activity>
@@ -94,7 +91,13 @@
         <activity android:name="com.jqk.mydemo.show.ShowActivity">
 
         </activity>
-        <activity android:name="com.jqk.mydemo.fragment.FragmentActivity">
+        <activity android:name=".fragment.FragmentActivity">
+
+        </activity>
+        <activity android:name="com.jqk.mydemo.fragment.normal.NormalFragmentActivity">
+
+        </activity>
+        <activity android:name=".fragment.viewpager.ViewpagerFragmentActivity">
 
         </activity>
         <activity android:name="com.jqk.mydemo.bluetooth.BluetoothActivity">
@@ -137,9 +140,6 @@
 
         </activity>
         <activity android:name="com.jqk.mydemo.retrofitkotlin.RetrofitActivity">
-
-        </activity>
-        <activity android:name="com.jqk.mydemo.dagger2.coffee.DaggerActivity">
 
         </activity>
         <activity android:name=".dagger2.login.LoginActivity"></activity>
