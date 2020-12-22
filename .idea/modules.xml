@@ -3,9 +3,21 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyDemo.iml" filepath="$PROJECT_DIR$/MyDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyDemo-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyDemo-app.iml" group="MyDemo/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commonlibrary/MyDemo-commonlibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/commonlibrary/MyDemo-commonlibrary.iml" group="MyDemo/commonlibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/filelibrary/MyDemo-filelibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/filelibrary/MyDemo-filelibrary.iml" group="MyDemo/filelibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ijkplayer-armv7a/MyDemo-ijkplayer-armv7a.iml" filepath="$PROJECT_DIR$/.idea/modules/ijkplayer-armv7a/MyDemo-ijkplayer-armv7a.iml" group="MyDemo/ijkplayer-armv7a" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ijkplayer-exo/MyDemo-ijkplayer-exo.iml" filepath="$PROJECT_DIR$/.idea/modules/ijkplayer-exo/MyDemo-ijkplayer-exo.iml" group="MyDemo/ijkplayer-exo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ijkplayer-java/MyDemo-ijkplayer-java.iml" filepath="$PROJECT_DIR$/.idea/modules/ijkplayer-java/MyDemo-ijkplayer-java.iml" group="MyDemo/ijkplayer-java" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ijkplayerlibrary/MyDemo-ijkplayerlibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/ijkplayerlibrary/MyDemo-ijkplayerlibrary.iml" group="MyDemo/ijkplayerlibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javacvlibrary/MyDemo-javacvlibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/javacvlibrary/MyDemo-javacvlibrary.iml" group="MyDemo/javacvlibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jetpacklibrary/MyDemo-jetpacklibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/jetpacklibrary/MyDemo-jetpacklibrary.iml" group="MyDemo/jetpacklibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loadmorelibrary/MyDemo-loadmorelibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/loadmorelibrary/MyDemo-loadmorelibrary.iml" group="MyDemo/loadmorelibrary" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/subsampling-scale-image-view-library/com.davemorrissey.labs-subsampling-scale-image-view-library.iml" filepath="$PROJECT_DIR$/.idea/modules/subsampling-scale-image-view-library/com.davemorrissey.labs-subsampling-scale-image-view-library.iml" group="MyDemo/subsampling-scale-image-view-library" />
       <module fileurl="file://$PROJECT_DIR$/commonlibrary/commonlibrary.iml" filepath="$PROJECT_DIR$/commonlibrary/commonlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/filelibrary/filelibrary.iml" filepath="$PROJECT_DIR$/filelibrary/filelibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-MyDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/github-MyDemo.iml" group="MyDemo" />
       <module fileurl="file://$PROJECT_DIR$/ijkplayer-armv7a/ijkplayer-armv7a.iml" filepath="$PROJECT_DIR$/ijkplayer-armv7a/ijkplayer-armv7a.iml" />
       <module fileurl="file://$PROJECT_DIR$/ijkplayer-exo/ijkplayer-exo.iml" filepath="$PROJECT_DIR$/ijkplayer-exo/ijkplayer-exo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ijkplayer-java/ijkplayer-java.iml" filepath="$PROJECT_DIR$/ijkplayer-java/ijkplayer-java.iml" />
