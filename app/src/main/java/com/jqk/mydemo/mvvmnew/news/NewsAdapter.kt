@@ -13,6 +13,15 @@ import com.jqk.mydemo.databinding.ItemNewsBinding
 import com.jqk.mydemo.glide.GlideApp
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+    var onCick: () -> Unit = ::onClick
+
+    fun onClick() {
+
+    }
+
+    fun setOnClickListener(onClick: ()-> Unit) {
+        this.onCick = onCick
+    }
 
     var context: Context
     var datas: List<News.Result.Data>
@@ -36,6 +45,10 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         DataBindingUtil.getBinding<ItemNewsBinding>(holder.itemView)?.run {
             news = datas[position]
+
+            img.setOnClickListener {
+                onClick()
+            }
         }
     }
 

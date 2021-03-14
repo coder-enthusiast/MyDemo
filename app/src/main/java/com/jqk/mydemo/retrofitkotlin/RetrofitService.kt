@@ -14,6 +14,4 @@ interface RetrofitService {
     @GET("index")
     fun getNew(@Query("type") type: String,
                @Query("key") key: String): Call<News>
-
-
 }

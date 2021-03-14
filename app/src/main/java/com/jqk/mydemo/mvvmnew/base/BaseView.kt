@@ -23,10 +23,10 @@ open class BaseView : AppCompatActivity() {
     }
 
     fun hideProgress() {
-        progressDialog.let {
-            if (it.isAdded || it.isVisible || it.isRemoving) {
-                it.dismissAllowingStateLoss()
-            }
-        }
+//        progressDialog.let {
+//            if (it.isAdded || it.isVisible || it.isRemoving) {
+//                it.dismissAllowingStateLoss()
+//            }
+//        }
     }
 }

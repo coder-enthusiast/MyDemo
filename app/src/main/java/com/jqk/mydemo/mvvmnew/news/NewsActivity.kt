@@ -89,5 +89,11 @@ class NewsActivity : BaseView() {
         var layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = layoutManager
+
+        adapter.setOnClickListener {
+            Toast.makeText(this, "dfsafa", Toast.LENGTH_SHORT).show()
+        }
     }
+
+
 }

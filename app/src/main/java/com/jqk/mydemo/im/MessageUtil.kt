@@ -3,9 +3,14 @@ package com.jqk.mydemo.im
 import android.content.Context
 import android.text.Spannable
 import android.text.SpannableString
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.gif.GifDrawable
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.jqk.mydemo.R
 import com.jqk.mydemo.im.emojiview.Emoji
 import com.jqk.commonlibrary.util.L
+import com.jqk.mydemo.glide.GlideApp
 import java.util.regex.Pattern
 
 object MessageUtil {
@@ -62,11 +67,23 @@ object MessageUtil {
             message = message.replaceFirst(matcher.group(), "")
             com.jqk.commonlibrary.util.L.d("message2 = " + message)
 
-            val drawable = context.getResources().getDrawable(id)
-            drawable.setBounds(0, 0, 70, 70)
-            val imageSpan = MyImageSpan(drawable)
+            GlideApp.with(context).asGif().load(R.drawable.emj_gif)
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .into(object : SimpleTarget<GifDrawable>() {
+                        override fun onResourceReady(resource: GifDrawable, transition: Transition<in GifDrawable>?) {
+                            val drawable = resource
+                            drawable.setBounds(0, 0, 200, 200)
+                            val imageSpan = MyImageSpan(drawable)
 
-            spanString.setSpan(imageSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+                            spanString.setSpan(imageSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+
+                            resource.setLoopCount(GifDrawable.LOOP_FOREVER);
+
+                            drawable.start()
+                        }
+                    })
+
+
         }
 
         return spanString
